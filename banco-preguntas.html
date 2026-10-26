@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cuestionario: Matemáticas y Razonamiento Lógico | Aula Virtual</title>
+  <!-- CSS propio e independiente para esta plantilla estilo Moodle LMS -->
+  <link rel="stylesheet" href="assets/banco-preguntas.css" />
+</head>
+<body>
+
+  <!-- Barra de navegación del aula virtual (Moodle Navbar) -->
+  <header class="lms-navbar">
+    <div class="lms-nav-container">
+      <a href="#" class="lms-brand">
+        <div class="lms-brand-logo">M</div>
+        <div>
+          <span class="lms-brand-title">Campus Virtual Institucional</span>
+          <span class="lms-brand-sub">Sistema de Gestión de Aprendizaje (LMS)</span>
+        </div>
+      </a>
+
+      <div class="lms-user-menu">
+        <a class="lms-back-link" href="index.html">← Volver a la galería</a>
+        <div class="user-profile">
+          <div class="user-avatar">ES</div>
+          <span>Estudiante Demo</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Moodle Breadcrumbs -->
+  <nav class="lms-breadcrumb-bar" aria-label="Miga de pan">
+    <div class="lms-container">
+      <ul class="lms-breadcrumbs">
+        <li><a href="#">Área personal</a></li>
+        <li><a href="#">Mis cursos</a></li>
+        <li><a href="#">MAT-101: Matemáticas Fundamentales</a></li>
+        <li><a href="#">Unidad 2: Álgebra y Geometría</a></li>
+        <li aria-current="page">Evaluación Diagnóstica</li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Encabezado de la Actividad / Cuestionario -->
+  <section class="lms-page-header">
+    <div class="lms-container">
+      <div class="header-content">
+        <div class="header-title-area">
+          <span class="exam-badge">Cuestionario en línea</span>
+          <h1>Evaluación Formativa: Banco de Matemáticas y Geometría</h1>
+          <div class="header-meta">
+            <span>📚 <strong>Materia:</strong> Geometría y Álgebra</span>
+            <span>⏱️ <strong>Intentos permitidos:</strong> 2</span>
+            <span>📊 <strong>Método de calificación:</strong> Calificación más alta</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cuerpo Principal: Formato Moodle a dos columnas -->
+  <main class="lms-container">
+    <div class="lms-main-layout">
+      <!-- Columna Izquierda: Listado de Preguntas Moodle -->
+      <section class="questions-stream" id="questions-container">
+
+        <!-- PREGUNTA 1 -->
+        <article class="moodle-question" id="q1" data-correct="B">
+          <div class="question-info-col">
+            <h2 class="question-number">Pregunta 1</h2>
+            <span class="question-state" id="q1-state">Sin responder aún</span>
+            <div class="question-points">Puntúa como 1,00</div>
+            <a href="#flag" class="flag-question" onclick="toggleFlag(event, this)">🚩 Marcar pregunta</a>
+          </div>
+
+          <div class="question-content-col">
+            <p class="question-stem">
+              Si una función es <strong>lineal</strong>, su gráfica correspondiente en el plano cartesiano es:
+            </p>
+
+            <ul class="answer-options" role="radiogroup" aria-label="Opciones de respuesta pregunta 1">
+              <label class="answer-option" for="q1_a">
+                <input type="radio" name="q1" id="q1_a" value="A" onchange="markAnswered(1)">
+                <div class="option-text-wrap"><span class="option-label">a.</span> Una parábola</div>
+              </label>
+
+              <label class="answer-option" for="q1_b">
+                <input type="radio" name="q1" id="q1_b" value="B" onchange="markAnswered(1)">
+                <div class="option-text-wrap"><span class="option-label">b.</span> Una recta</div>
+              </label>
+
+              <label class="answer-option" for="q1_c">
+                <input type="radio" name="q1" id="q1_c" value="C" onchange="markAnswered(1)">
+                <div class="option-text-wrap"><span class="option-label">c.</span> Una circunferencia</div>
+              </label>
+
+              <label class="answer-option" for="q1_d">
+                <input type="radio" name="q1" id="q1_d" value="D" onchange="markAnswered(1)">
+                <div class="option-text-wrap"><span class="option-label">d.</span> Una hipérbola</div>
+              </label>
+            </ul>
+
+            <div class="moodle-feedback" id="q1-feedback"></div>
+          </div>
+        </article>
+
+        <!-- PREGUNTA 2 -->
+        <article class="moodle-question" id="q2" data-correct="A">
+          <div class="question-info-col">
+            <h2 class="question-number">Pregunta 2</h2>
+            <span class="question-state" id="q2-state">Sin responder aún</span>
+            <div class="question-points">Puntúa como 1,00</div>
+            <a href="#flag" class="flag-question" onclick="toggleFlag(event, this)">🚩 Marcar pregunta</a>
+          </div>
+
+          <div class="question-content-col">
+            <p class="question-stem">
+              La fracción equivalente irreducible a <strong>6/9</strong> en su forma más simplificada es:
+            </p>
+
+            <ul class="answer-options" role="radiogroup" aria-label="Opciones de respuesta pregunta 2">
+              <label class="answer-option" for="q2_a">
+                <input type="radio" name="q2" id="q2_a" value="A" onchange="markAnswered(2)">
+                <div class="option-text-wrap"><span class="option-label">a.</span> 2/3</div>
+              </label>
+
+              <label class="answer-option" for="q2_b">
+                <input type="radio" name="q2" id="q2_b" value="B" onchange="markAnswered(2)">
+                <div class="option-text-wrap"><span class="option-label">b.</span> 3/2</div>
+              </label>
+
+              <label class="answer-option" for="q2_c">
+                <input type="radio" name="q2" id="q2_c" value="C" onchange="markAnswered(2)">
+                <div class="option-text-wrap"><span class="option-label">c.</span> 1/3</div>
+              </label>
+
+              <label class="answer-option" for="q2_d">
+                <input type="radio" name="q2" id="q2_d" value="D" onchange="markAnswered(2)">
+                <div class="option-text-wrap"><span class="option-label">d.</span> 4/9</div>
+              </label>
+            </ul>
+
+            <div class="moodle-feedback" id="q2-feedback"></div>
+          </div>
+        </article>
+
+        <!-- PREGUNTA 3 -->
+        <article class="moodle-question" id="q3" data-correct="C">
+          <div class="question-info-col">
+            <h2 class="question-number">Pregunta 3</h2>
+            <span class="question-state" id="q3-state">Sin responder aún</span>
+            <div class="question-points">Puntúa como 1,00</div>
+            <a href="#flag" class="flag-question" onclick="toggleFlag(event, this)">🚩 Marcar pregunta</a>
+          </div>
+
+          <div class="question-content-col">
+            <p class="question-stem">
+              Un triángulo cuyos tres lados poseen exactamente la <strong>misma longitud</strong> y ángulos internos de 60° recibe el nombre de:
+            </p>
+
+            <ul class="answer-options" role="radiogroup" aria-label="Opciones de respuesta pregunta 3">
+              <label class="answer-option" for="q3_a">
+                <input type="radio" name="q3" id="q3_a" value="A" onchange="markAnswered(3)">
+                <div class="option-text-wrap"><span class="option-label">a.</span> Triángulo Isósceles</div>
+              </label>
+
+              <label class="answer-option" for="q3_b">
+                <input type="radio" name="q3" id="q3_b" value="B" onchange="markAnswered(3)">
+                <div class="option-text-wrap"><span class="option-label">b.</span> Triángulo Escaleno</div>
+              </label>
+
+              <label class="answer-option" for="q3_c">
+                <input type="radio" name="q3" id="q3_c" value="C" onchange="markAnswered(3)">
+                <div class="option-text-wrap"><span class="option-label">c.</span> Triángulo Equilátero</div>
+              </label>
+
+              <label class="answer-option" for="q3_d">
+                <input type="radio" name="q3" id="q3_d" value="D" onchange="markAnswered(3)">
+                <div class="option-text-wrap"><span class="option-label">d.</span> Triángulo Rectángulo</div>
+              </label>
+            </ul>
+
+            <div class="moodle-feedback" id="q3-feedback"></div>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- Columna Derecha: Panel de Navegación por el Cuestionario (Quiz Navigation de Moodle) -->
+      <aside class="quiz-nav-sidebar">
+        <div class="quiz-nav-panel">
+          <h3>
+            <span>Navegación por el cuestionario</span>
+          </h3>
+
+          <div class="quiz-timer">
+            <span>⏱️</span>
+            <span>Tiempo restante: <strong>44:20</strong></span>
+          </div>
+
+          <div class="quiz-grid-nav" aria-label="Accesos directos a preguntas">
+            <a href="#q1" class="quiz-nav-btn" id="nav-btn-1">1</a>
+            <a href="#q2" class="quiz-nav-btn" id="nav-btn-2">2</a>
+            <a href="#q3" class="quiz-nav-btn" id="nav-btn-3">3</a>
+          </div>
+
+          <div class="quiz-nav-legend">
+            <div class="legend-item">
+              <div class="legend-dot empty"></div>
+              <span>Sin responder</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot answered"></div>
+              <span>Respuesta guardada</span>
+            </div>
+          </div>
+
+          <button class="btn-finish-quiz" id="submit-quiz-btn" onclick="gradeQuiz()">
+            <span>Terminar intento...</span>
+          </button>
+
+          <button class="btn-reset-quiz" id="reset-quiz-btn" onclick="resetQuiz()">
+            <span>Limpiar respuestas</span>
+          </button>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="lms-footer">
+    <div class="lms-container">
+      <p>Usted se ha identificado como <strong>Estudiante Demo</strong> (Cerrar sesión)</p>
+      <p style="font-size: 0.8rem; margin: 0.25rem 0 0;">Plataforma Virtual Educativa • Adaptada con interfaz Boost LMS</p>
+    </div>
+  </footer>
+
+  <!-- Lógica interactiva del cuestionario Moodle -->
+  <script>
+    function markAnswered(qNum) {
+      // Actualizar etiqueta lateral de la pregunta
+      const stateEl = document.getElementById(`q${qNum}-state`);
+      if (stateEl) {
+        stateEl.textContent = 'Respuesta guardada';
+        stateEl.classList.add('answered');
+      }
+
+      // Actualizar botón en el bloque de navegación Moodle
+      const navBtn = document.getElementById(`nav-btn-${qNum}`);
+      if (navBtn) {
+        navBtn.classList.add('completed');
+      }
+    }
+
+    function toggleFlag(e, el) {
+      e.preventDefault();
+      if (el.classList.contains('flagged')) {
+        el.classList.remove('flagged');
+        el.innerHTML = '🚩 Marcar pregunta';
+        el.style.color = 'var(--lms-primary)';
+      } else {
+        el.classList.add('flagged');
+        el.innerHTML = '🚩 Marcada';
+        el.style.color = '#dc2626';
+      }
+    }
+
+    function gradeQuiz() {
+      const questions = document.querySelectorAll('.moodle-question');
+      let totalQuestions = questions.length;
+      let correctAnswers = 0;
+
+      questions.forEach((q, idx) => {
+        const qNum = idx + 1;
+        const correctVal = q.dataset.correct;
+        const selectedRadio = q.querySelector(`input[name="q${qNum}"]:checked`);
+        const feedbackEl = document.getElementById(`q${qNum}-feedback`);
+        const options = q.querySelectorAll('.answer-option');
+
+        // Resetear clases de opciones
+        options.forEach(opt => opt.classList.remove('is-correct', 'is-wrong'));
+
+        if (!selectedRadio) {
+          feedbackEl.className = 'moodle-feedback show error';
+          feedbackEl.innerHTML = '⚠️ <strong>Sin responder:</strong> No seleccionaste ninguna opción.';
+          return;
+        }
+
+        const userVal = selectedRadio.value;
+        const selectedLabel = selectedRadio.closest('.answer-option');
+
+        if (userVal === correctVal) {
+          correctAnswers++;
+          selectedLabel.classList.add('is-correct');
+          feedbackEl.className = 'moodle-feedback show success';
+          feedbackEl.innerHTML = '✅ <strong>Correcto:</strong> Puntuación 1,00 sobre 1,00. ¡Muy bien fundamentado!';
+        } else {
+          selectedLabel.classList.add('is-wrong');
+          // Resaltar la correcta
+          const correctRadio = q.querySelector(`input[name="q${qNum}"][value="${correctVal}"]`);
+          if (correctRadio) {
+            correctRadio.closest('.answer-option').classList.add('is-correct');
+          }
+          feedbackEl.className = 'moodle-feedback show error';
+          feedbackEl.innerHTML = `❌ <strong>Incorrecto:</strong> La respuesta correcta era la opción (${correctVal.toLowerCase()}).`;
+        }
+      });
+
+      // Calificación final en escala institucional (0 a 10 o 0 a 5)
+      const grade = ((correctAnswers / totalQuestions) * 5.0).toFixed(1);
+      alert(`📊 Intento finalizado:\nCalificación obtenida: ${grade} / 5.0\nRespuestas correctas: ${correctAnswers} de ${totalQuestions}`);
+    }
+
+    function resetQuiz() {
+      const radios = document.querySelectorAll('input[type="radio"]');
+      radios.forEach(r => r.checked = false);
+
+      const options = document.querySelectorAll('.answer-option');
+      options.forEach(opt => opt.classList.remove('is-correct', 'is-wrong'));
+
+      const states = document.querySelectorAll('.question-state');
+      states.forEach(st => {
+        st.textContent = 'Sin responder aún';
+        st.classList.remove('answered');
+      });
+
+      const navBtns = document.querySelectorAll('.quiz-nav-btn');
+      navBtns.forEach(btn => btn.classList.remove('completed'));
+
+      const feedbacks = document.querySelectorAll('.moodle-feedback');
+      feedbacks.forEach(fb => {
+        fb.className = 'moodle-feedback';
+        fb.innerHTML = '';
+      });
+    }
+  </script>
+</body>
+</html>

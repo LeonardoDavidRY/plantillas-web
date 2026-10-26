@@ -1,0 +1,565 @@
+/* ============================================================
+   BANCO DE PREGUNTAS - ESTILO AULA VIRTUAL LMS (MOODLE BOOST / MODERN LMS)
+   ============================================================ */
+
+:root {
+  --lms-bg: #f4f6f9;
+  --lms-surface: #ffffff;
+  --lms-primary: #0f6cbf;       /* Azul Moodle Boost */
+  --lms-primary-dark: #0b5190;
+  --lms-primary-light: #e8f2fc;
+  --lms-accent: #f98012;        /* Naranja Moodle */
+  --lms-success: #198754;
+  --lms-success-bg: #d1e7dd;
+  --lms-danger: #dc3545;
+  --lms-danger-bg: #f8d7da;
+  --lms-text: #212529;
+  --lms-muted: #6c757d;
+  --lms-border: #dee2e6;
+  --lms-shadow: 0 0.125rem 0.35rem rgba(0, 0, 0, 0.075);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--lms-bg);
+  color: var(--lms-text);
+  line-height: 1.5;
+}
+
+/* Barra superior institucional LMS */
+.lms-navbar {
+  background-color: var(--lms-surface);
+  border-bottom: 1px solid var(--lms-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.lms-nav-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lms-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--lms-text);
+}
+
+.lms-brand-logo {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--lms-primary), #0284c7);
+  color: #fff;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.lms-brand-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.2;
+}
+
+.lms-brand-sub {
+  font-size: 0.75rem;
+  color: var(--lms-muted);
+  display: block;
+}
+
+.lms-user-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lms-back-link {
+  color: var(--lms-primary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  background: var(--lms-primary-light);
+  transition: all 0.2s;
+}
+
+.lms-back-link:hover {
+  background: #d0e6fb;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--lms-text);
+  border-left: 1px solid var(--lms-border);
+  padding-left: 1rem;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  display: grid;
+  place-items: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #334155;
+}
+
+/* Breadcrumbs al estilo Moodle */
+.lms-breadcrumb-bar {
+  background: #fff;
+  border-bottom: 1px solid var(--lms-border);
+  padding: 0.65rem 0;
+}
+
+.lms-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.lms-breadcrumbs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.lms-breadcrumbs li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--lms-muted);
+}
+
+.lms-breadcrumbs li:not(:last-child)::after {
+  content: "/";
+  color: #adb5bd;
+}
+
+.lms-breadcrumbs a {
+  color: var(--lms-primary);
+  text-decoration: none;
+}
+
+.lms-breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+/* Encabezado del Curso / Cuestionario */
+.lms-page-header {
+  background: #fff;
+  border-bottom: 1px solid var(--lms-border);
+  padding: 1.5rem 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-title-area h1 {
+  margin: 0 0 0.35rem 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.header-meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  color: var(--lms-muted);
+  font-size: 0.88rem;
+}
+
+.header-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.exam-badge {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Layout Principal: Dos columnas (Preguntas + Panel Lateral de Navegación Moodle) */
+.lms-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1.5rem;
+  padding: 1.75rem 0 3rem;
+}
+
+@media (max-width: 960px) {
+  .lms-main-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tarjetas de Pregunta Moodle */
+.moodle-question {
+  background: var(--lms-surface);
+  border: 1px solid var(--lms-border);
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--lms-shadow);
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  overflow: hidden;
+}
+
+@media (max-width: 680px) {
+  .moodle-question {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Columna lateral de metadatos de la pregunta (Típica de Moodle) */
+.question-info-col {
+  background: #f8fafc;
+  border-right: 1px solid var(--lms-border);
+  padding: 1.1rem;
+  font-size: 0.82rem;
+  color: var(--lms-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.question-number {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--lms-text);
+  margin: 0;
+}
+
+.question-state {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.78rem;
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.question-state.answered {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.question-points {
+  font-size: 0.8rem;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 0.5rem;
+}
+
+.flag-question {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--lms-primary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.flag-question:hover {
+  text-decoration: underline;
+}
+
+/* Contenido de la Pregunta */
+.question-content-col {
+  padding: 1.5rem;
+}
+
+.question-stem {
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: #1e293b;
+  margin: 0 0 1.25rem 0;
+  font-weight: 500;
+}
+
+.question-stem strong {
+  font-weight: 700;
+}
+
+/* Opciones de respuesta */
+.answer-options {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.answer-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--lms-border);
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.answer-option:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.answer-option input[type="radio"] {
+  margin-top: 0.2rem;
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  accent-color: var(--lms-primary);
+}
+
+.option-text-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+.option-label {
+  font-weight: 700;
+  color: var(--lms-muted);
+}
+
+/* Estados al comprobar / corregir */
+.answer-option.is-correct {
+  background: var(--lms-success-bg) !important;
+  border-color: #86efac !important;
+  color: #14532d;
+}
+
+.answer-option.is-wrong {
+  background: var(--lms-danger-bg) !important;
+  border-color: #fca5a5 !important;
+  color: #7f1d1d;
+}
+
+/* Retroalimentación Moodle */
+.moodle-feedback {
+  background: #eff6ff;
+  border-left: 4px solid var(--lms-primary);
+  padding: 0.85rem 1rem;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.9rem;
+  color: #1e3a8a;
+  margin-top: 1rem;
+  display: none;
+}
+
+.moodle-feedback.show {
+  display: block;
+}
+
+.moodle-feedback.success {
+  background: #f0fdf4;
+  border-left-color: #16a34a;
+  color: #166534;
+}
+
+.moodle-feedback.error {
+  background: #fef2f2;
+  border-left-color: #dc2626;
+  color: #991b1b;
+}
+
+/* Panel Lateral de Navegación del Cuestionario (Quiz Navigation) */
+.quiz-nav-panel {
+  background: var(--lms-surface);
+  border: 1px solid var(--lms-border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: var(--lms-shadow);
+  position: sticky;
+  top: 75px;
+}
+
+.quiz-nav-panel h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quiz-timer {
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  color: #92400e;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.quiz-grid-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-nav-btn {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--lms-border);
+  background: #f8fafc;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #334155;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.quiz-nav-btn:hover {
+  background: #e2e8f0;
+}
+
+.quiz-nav-btn.active {
+  border-color: var(--lms-primary);
+  background: var(--lms-primary-light);
+  color: var(--lms-primary);
+}
+
+.quiz-nav-btn.completed {
+  background: #e2e8f0;
+  border-bottom: 3px solid #10b981;
+}
+
+.quiz-nav-legend {
+  font-size: 0.78rem;
+  color: var(--lms-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-top: 1px solid var(--lms-border);
+  padding-top: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.legend-dot.empty { border: 1px solid var(--lms-border); background: #fff; }
+.legend-dot.answered { background: #e2e8f0; border-bottom: 2px solid #10b981; }
+
+.btn-finish-quiz {
+  width: 100%;
+  background: var(--lms-primary);
+  color: #fff;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.btn-finish-quiz:hover {
+  background: var(--lms-primary-dark);
+}
+
+.btn-reset-quiz {
+  width: 100%;
+  background: transparent;
+  color: var(--lms-muted);
+  border: 1px solid var(--lms-border);
+  padding: 0.55rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: all 0.2s;
+}
+
+.btn-reset-quiz:hover {
+  background: #f1f5f9;
+  color: var(--lms-text);
+}
+
+/* Footer de plataforma */
+.lms-footer {
+  background: #ffffff;
+  border-top: 1px solid var(--lms-border);
+  padding: 1.5rem 0;
+  color: var(--lms-muted);
+  font-size: 0.85rem;
+  text-align: center;
+}

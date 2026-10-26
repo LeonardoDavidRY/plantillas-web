@@ -1,0 +1,506 @@
+/* ============================================================
+   ACTIVIDADES DIDÁCTICAS - ESTILO GUÍA PEDAGÓGICA Y TALLERES CREATIVOS
+   ============================================================ */
+
+:root {
+  --did-bg: #f8fafc;
+  --did-surface: #ffffff;
+  --did-primary: #0d9488;        /* Teal moderno pedagógico */
+  --did-primary-dark: #0f766e;
+  --did-primary-light: #ccfbf1;
+  --did-secondary: #f59e0b;      /* Ámbar didáctico */
+  --did-indigo: #6366f1;
+  --did-text-main: #0f172a;
+  --did-text-muted: #475569;
+  --did-border: #e2e8f0;
+  --did-shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --did-shadow-md: 0 6px 18px rgba(15, 23, 42, 0.08);
+  --did-shadow-lg: 0 14px 28px rgba(15, 23, 42, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--did-bg);
+  color: var(--did-text-main);
+  line-height: 1.6;
+}
+
+/* Barra superior y retorno */
+.did-topbar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--did-border);
+  padding: 0.6rem 0;
+}
+
+.did-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.did-back-link {
+  color: var(--did-primary-dark);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.did-back-link:hover {
+  text-decoration: underline;
+}
+
+/* Hero Pedagógico de la Secuencia Didáctica */
+.did-hero {
+  background: linear-gradient(135deg, #042f2e 0%, #115e59 55%, #0f766e 100%);
+  color: #ffffff;
+  padding: 3.5rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.did-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 90% 20%, rgba(20, 184, 166, 0.25), transparent 45%);
+  pointer-events: none;
+}
+
+.hero-tag {
+  display: inline-block;
+  background: rgba(204, 251, 241, 0.18);
+  border: 1px solid rgba(204, 251, 241, 0.35);
+  color: #99f6e4;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 0.85rem;
+}
+
+.did-hero h1 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  margin: 0 0 0.85rem 0;
+  line-height: 1.2;
+}
+
+.did-hero p {
+  font-size: 1.05rem;
+  color: #ccfbf1;
+  max-width: 65ch;
+  margin: 0 0 1.75rem 0;
+}
+
+/* Ficha Técnica / Metadatos de la Actividad (Bloques flotantes) */
+.meta-ribbon {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+}
+
+.meta-pill {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.meta-pill-icon {
+  font-size: 1.4rem;
+}
+
+.meta-pill-text strong {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #99f6e4;
+}
+
+.meta-pill-text span {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Selector dinámico de dinámicas didácticas */
+.activity-selector-section {
+  transform: translateY(-24px);
+  position: relative;
+  z-index: 10;
+}
+
+.selector-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--did-shadow-md);
+  border: 1px solid var(--did-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.selector-info h2 {
+  font-size: 1.15rem;
+  margin: 0 0 0.25rem 0;
+  color: #0f172a;
+}
+
+.selector-info p {
+  font-size: 0.88rem;
+  color: var(--did-text-muted);
+  margin: 0;
+}
+
+.activity-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover {
+  background: #e2e8f0;
+}
+
+.tab-btn.active {
+  background: var(--did-primary-dark);
+  color: #ffffff;
+  border-color: var(--did-primary-dark);
+}
+
+/* Layout del cuerpo de la actividad */
+.did-body-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 900px) {
+  .did-body-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Secuencia didáctica paso a paso (Timeline estructurado) */
+.sequence-wrapper {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid var(--did-border);
+  padding: 2rem;
+  box-shadow: var(--did-shadow-sm);
+}
+
+.sequence-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.75rem;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 1rem;
+}
+
+.sequence-head h3 {
+  margin: 0;
+  font-size: 1.35rem;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.timeline-steps {
+  position: relative;
+  padding-left: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.timeline-steps::before {
+  content: "";
+  position: absolute;
+  left: 1.15rem;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  background: #e2e8f0;
+}
+
+.step-card {
+  position: relative;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  transition: all 0.2s;
+}
+
+.step-card:hover {
+  background: #ffffff;
+  box-shadow: var(--did-shadow-md);
+  border-color: #cbd5e1;
+}
+
+.step-bullet {
+  position: absolute;
+  left: -2.5rem;
+  top: 1.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--did-primary-dark);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 0 5px #ffffff;
+  transform: translateX(-50%);
+}
+
+.step-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.step-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.step-duration {
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.step-desc {
+  margin: 0 0 0.85rem 0;
+  color: #334155;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.step-tips {
+  background: #f0fdfa;
+  border-left: 3px solid var(--did-primary);
+  padding: 0.6rem 0.85rem;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.88rem;
+  color: #134e4a;
+}
+
+.step-tips strong {
+  color: var(--did-primary-dark);
+}
+
+/* Panel Lateral de Recursos y Rúbrica */
+.did-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebar-box {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid var(--did-border);
+  padding: 1.5rem;
+  box-shadow: var(--did-shadow-sm);
+}
+
+.sidebar-box h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.05rem;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 0.65rem;
+}
+
+.materials-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.material-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.material-item input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--did-primary-dark);
+  cursor: pointer;
+}
+
+/* Rúbrica rápida de evaluación */
+.rubric-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.rubric-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 700;
+  text-align: left;
+  padding: 0.5rem;
+  border-bottom: 2px solid var(--did-border);
+}
+
+.rubric-table td {
+  padding: 0.55rem 0.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+}
+
+/* Botones de acción del docente */
+.docent-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.btn-did-primary {
+  background: var(--did-primary-dark);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.btn-did-primary:hover {
+  background: #115e59;
+  transform: translateY(-1px);
+}
+
+.btn-did-outline {
+  background: transparent;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.btn-did-outline:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+/* Cronómetro Interactivo para el aula */
+.timer-widget {
+  background: #fefce8;
+  border: 1px solid #fef08a;
+  border-radius: 14px;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.timer-display {
+  font-size: 2.2rem;
+  font-weight: 800;
+  font-family: monospace;
+  color: #854d0e;
+  margin: 0.35rem 0 0.85rem;
+}
+
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.timer-btn {
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+
+.timer-btn-start { background: #16a34a; color: #fff; }
+.timer-btn-reset { background: #e2e8f0; color: #475569; }
+
+/* Pie de página */
+.did-footer {
+  background: #ffffff;
+  border-top: 1px solid var(--did-border);
+  padding: 2rem 0;
+  font-size: 0.88rem;
+  color: var(--did-text-muted);
+  text-align: center;
+}

@@ -1,0 +1,525 @@
+/* ============================================================
+   ACTIVIDADES ESTILO H5P - GAMIFICACIÓN EDUCATIVA MODERNA
+   ============================================================ */
+
+:root {
+  --h5p-bg: #f0f4f9;
+  --h5p-surface: #ffffff;
+  --h5p-primary: #1d4ed8;       /* Azul interactivo */
+  --h5p-primary-light: #eff6ff;
+  --h5p-secondary: #0ea5e9;
+  --h5p-success: #10b981;
+  --h5p-success-light: #ecfdf5;
+  --h5p-danger: #ef4444;
+  --h5p-warning: #f59e0b;
+  --h5p-text-main: #0f172a;
+  --h5p-text-muted: #64748b;
+  --h5p-border: #e2e8f0;
+  --h5p-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--h5p-bg);
+  color: var(--h5p-text-main);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Barra superior de navegación */
+.h5p-topbar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--h5p-border);
+  padding: 0.75rem 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.h5p-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.h5p-nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.h5p-back-link {
+  color: #1e40af;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #eff6ff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.h5p-back-link:hover {
+  background: #dbeafe;
+}
+
+.h5p-badge-header {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0369a1;
+  background: #e0f2fe;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Header principal */
+.h5p-header {
+  padding: 2rem 0 1.5rem;
+}
+
+.h5p-header h1 {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.h5p-header p {
+  color: var(--h5p-text-muted);
+  font-size: 1.05rem;
+  margin: 0;
+  max-width: 70ch;
+}
+
+/* Contenedor de las actividades */
+.h5p-wrap {
+  display: grid;
+  gap: 2.25rem;
+  padding-bottom: 3.5rem;
+}
+
+/* Tarjeta marco de juego (Game Box) */
+.game-box {
+  background: var(--h5p-surface);
+  border-radius: 20px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  padding: 1.75rem;
+  box-shadow: var(--h5p-shadow);
+  transition: box-shadow 0.2s ease;
+}
+
+.game-box:hover {
+  box-shadow: 0 14px 30px -5px rgba(15, 23, 42, 0.12);
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--h5p-border);
+  padding-bottom: 1rem;
+}
+
+.game-header h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #1e3a8a;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.game-stats {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.stat-chip {
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid #bfdbfe;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  padding: 0.45rem 0.9rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.game-subtitle {
+  margin: 0 0 1.25rem 0;
+  color: var(--h5p-text-muted);
+  font-size: 0.95rem;
+}
+
+/* ============================================================
+   1. SOPA DE LETRAS INTERACTIVA
+   ============================================================ */
+.word-search-layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .word-search-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.word-search-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 0.35rem;
+  max-width: 440px;
+  user-select: none;
+  touch-action: none;
+  background: #f8fafc;
+  padding: 0.75rem;
+  border-radius: 14px;
+  border: 2px solid #e2e8f0;
+}
+
+.cell {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cell:hover {
+  background: #e0e7ff;
+  border-color: #6366f1;
+  transform: scale(1.05);
+}
+
+.cell.selected {
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #2563eb;
+  transform: scale(0.96);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+}
+
+.cell.found {
+  background: #10b981 !important;
+  color: #ffffff !important;
+  border-color: #059669 !important;
+  animation: pulse-success 0.4s ease;
+}
+
+@keyframes pulse-success {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+.words-panel {
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 1.25rem;
+  border: 1px solid #e2e8f0;
+  min-width: 220px;
+}
+
+.words-panel h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.92rem;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 800;
+}
+
+.word-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.word-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 0.92rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.word-item.completed {
+  text-decoration: line-through;
+  color: #94a3b8;
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.word-item.completed::before {
+  content: "✔";
+  color: #10b981;
+  font-weight: bold;
+}
+
+/* ============================================================
+   2. CRUCIGRAMA PEDAGÓGICO INTERACTIVO
+   ============================================================ */
+.crossword-layout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .crossword-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.crossword {
+  display: grid;
+  grid-template-columns: repeat(8, 42px);
+  grid-template-rows: repeat(8, 42px);
+  gap: 4px;
+  background: #0f172a;
+  padding: 6px;
+  border-radius: 14px;
+  width: fit-content;
+  box-shadow: var(--h5p-shadow);
+}
+
+.square {
+  position: relative;
+  background: #ffffff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.square input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #0f172a;
+  padding: 0;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.square input:focus {
+  background: #fef08a;
+}
+
+.square.correct input {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.square.wrong input {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.square--block {
+  background: #0f172a;
+  border-radius: 4px;
+}
+
+.square-num {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #64748b;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.clues-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.clues-section h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+  color: #1e3a8a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.clue-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.clue-item {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: #334155;
+  background: #f8fafc;
+  padding: 0.65rem 0.95rem;
+  border-radius: 8px;
+  border-left: 4px solid #3b82f6;
+  transition: all 0.2s ease;
+}
+
+.clue-item:hover {
+  background: #eff6ff;
+  border-left-color: #2563eb;
+  transform: translateX(4px);
+}
+
+.game-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.btn-action {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.25rem;
+  font-weight: 700;
+  font-size: 0.92rem;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+  transition: all 0.2s ease;
+}
+
+.btn-action:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-1px);
+}
+
+/* Banner de retroalimentación */
+.feedback-banner {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: none;
+}
+
+.feedback-banner.show {
+  display: block;
+}
+
+.feedback-banner.success {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.feedback-banner.info {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #7dd3fc;
+}
+
+/* Footer de nota pedagógica */
+.h5p-footer-note {
+  background: #ffffff;
+  border: 1px solid var(--h5p-border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+  color: var(--h5p-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .word-search-grid {
+    max-width: 100%;
+    gap: 0.2rem;
+    padding: 0.4rem;
+  }
+  .cell {
+    font-size: 0.95rem;
+  }
+  .crossword {
+    grid-template-columns: repeat(8, 34px);
+    grid-template-rows: repeat(8, 34px);
+  }
+  .square input {
+    font-size: 1rem;
+  }
+}

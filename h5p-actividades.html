@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Actividades Gamificadas estilo H5P | Recursos Interactivos de Aula</title>
+  <!-- CSS propio e independiente para esta plantilla -->
+  <link rel="stylesheet" href="assets/h5p-actividades.css" />
+</head>
+<body>
+
+  <!-- Barra superior de navegación y retorno -->
+  <header class="h5p-topbar">
+    <div class="h5p-container h5p-nav-row">
+      <a class="h5p-back-link" href="index.html">← Volver a la galería</a>
+      <span class="h5p-badge-header">🎮 Gamificación Educativa • Compatible H5P / LMS</span>
+    </div>
+  </header>
+
+  <!-- Encabezado de la página -->
+  <div class="h5p-container">
+    <header class="h5p-header">
+      <h1>Actividades Creativas e Interactivas</h1>
+      <p>Módulos de gamificación estilo H5P 100% funcionales para instituciones educativas. Diseñados para potenciar la atención, el vocabulario técnico y la retención del estudiante.</p>
+    </header>
+
+    <main class="h5p-wrap">
+      <!-- ACTIVIDAD 1: SOPA DE LETRAS INTERACTIVA -->
+      <article class="game-box" id="wordsearch-activity">
+        <div class="game-header">
+          <h2><span>🔍</span> Sopa de Letras: Vocabulario Tecnológico</h2>
+          <div class="game-stats">
+            <span class="stat-chip" id="ws-progress">Palabras: 0 / 4</span>
+            <button class="btn-secondary" id="ws-reset-btn" title="Reiniciar actividad">🔄 Reiniciar</button>
+          </div>
+        </div>
+
+        <p class="game-subtitle">
+          Haz clic y arrastra sobre las letras o selecciónalas en orden para encontrar las palabras ocultas.
+        </p>
+
+        <div class="word-search-layout">
+          <div class="word-search-grid" id="ws-grid" aria-label="Cuadrícula de sopa de letras">
+            <!-- Fila 0: ALGORITMOS -->
+            <div class="cell" data-r="0" data-c="0">A</div><div class="cell" data-r="0" data-c="1">L</div><div class="cell" data-r="0" data-c="2">G</div><div class="cell" data-r="0" data-c="3">O</div><div class="cell" data-r="0" data-c="4">R</div><div class="cell" data-r="0" data-c="5">I</div><div class="cell" data-r="0" data-c="6">T</div><div class="cell" data-r="0" data-c="7">M</div><div class="cell" data-r="0" data-c="8">O</div><div class="cell" data-r="0" data-c="9">S</div>
+            <!-- Fila 1: CIENCIAAQP -->
+            <div class="cell" data-r="1" data-c="0">C</div><div class="cell" data-r="1" data-c="1">I</div><div class="cell" data-r="1" data-c="2">E</div><div class="cell" data-r="1" data-c="3">N</div><div class="cell" data-r="1" data-c="4">C</div><div class="cell" data-r="1" data-c="5">I</div><div class="cell" data-r="1" data-c="6">A</div><div class="cell" data-r="1" data-c="7">A</div><div class="cell" data-r="1" data-c="8">Q</div><div class="cell" data-r="1" data-c="9">P</div>
+            <!-- Fila 2: ESCUELATRL -->
+            <div class="cell" data-r="2" data-c="0">E</div><div class="cell" data-r="2" data-c="1">S</div><div class="cell" data-r="2" data-c="2">C</div><div class="cell" data-r="2" data-c="3">U</div><div class="cell" data-r="2" data-c="4">E</div><div class="cell" data-r="2" data-c="5">L</div><div class="cell" data-r="2" data-c="6">A</div><div class="cell" data-r="2" data-c="7">T</div><div class="cell" data-r="2" data-c="8">R</div><div class="cell" data-r="2" data-c="9">L</div>
+            <!-- Fila 3: LOGICAZOBN -->
+            <div class="cell" data-r="3" data-c="0">L</div><div class="cell" data-r="3" data-c="1">O</div><div class="cell" data-r="3" data-c="2">G</div><div class="cell" data-r="3" data-c="3">I</div><div class="cell" data-r="3" data-c="4">C</div><div class="cell" data-r="3" data-c="5">A</div><div class="cell" data-r="3" data-c="6">Z</div><div class="cell" data-r="3" data-c="7">O</div><div class="cell" data-r="3" data-c="8">B</div><div class="cell" data-r="3" data-c="9">N</div>
+            <!-- Fila 4 -->
+            <div class="cell" data-r="4" data-c="0">M</div><div class="cell" data-r="4" data-c="1">N</div><div class="cell" data-r="4" data-c="2">R</div><div class="cell" data-r="4" data-c="3">T</div><div class="cell" data-r="4" data-c="4">Y</div><div class="cell" data-r="4" data-c="5">U</div><div class="cell" data-r="4" data-c="6">I</div><div class="cell" data-r="4" data-c="7">O</div><div class="cell" data-r="4" data-c="8">P</div><div class="cell" data-r="4" data-c="9">A</div>
+            <!-- Fila 5 -->
+            <div class="cell" data-r="5" data-c="0">H</div><div class="cell" data-r="5" data-c="1">J</div><div class="cell" data-r="5" data-c="2">K</div><div class="cell" data-r="5" data-c="3">L</div><div class="cell" data-r="5" data-c="4">B</div><div class="cell" data-r="5" data-c="5">V</div><div class="cell" data-r="5" data-c="6">C</div><div class="cell" data-r="5" data-c="7">X</div><div class="cell" data-r="5" data-c="8">Z</div><div class="cell" data-r="5" data-c="9">M</div>
+            <!-- Fila 6 -->
+            <div class="cell" data-r="6" data-c="0">T</div><div class="cell" data-r="6" data-c="1">R</div><div class="cell" data-r="6" data-c="2">E</div><div class="cell" data-r="6" data-c="3">W</div><div class="cell" data-r="6" data-c="4">Q</div><div class="cell" data-r="6" data-c="5">A</div><div class="cell" data-r="6" data-c="6">S</div><div class="cell" data-r="6" data-c="7">D</div><div class="cell" data-r="6" data-c="8">F</div><div class="cell" data-r="6" data-c="9">G</div>
+            <!-- Fila 7 -->
+            <div class="cell" data-r="7" data-c="0">Y</div><div class="cell" data-r="7" data-c="1">U</div><div class="cell" data-r="7" data-c="2">I</div><div class="cell" data-r="7" data-c="3">O</div><div class="cell" data-r="7" data-c="4">P</div><div class="cell" data-r="7" data-c="5">L</div><div class="cell" data-r="7" data-c="6">K</div><div class="cell" data-r="7" data-c="7">J</div><div class="cell" data-r="7" data-c="8">H</div><div class="cell" data-r="7" data-c="9">G</div>
+            <!-- Fila 8 -->
+            <div class="cell" data-r="8" data-c="0">B</div><div class="cell" data-r="8" data-c="1">N</div><div class="cell" data-r="8" data-c="2">M</div><div class="cell" data-r="8" data-c="3">Q</div><div class="cell" data-r="8" data-c="4">W</div><div class="cell" data-r="8" data-c="5">E</div><div class="cell" data-r="8" data-c="6">R</div><div class="cell" data-r="8" data-c="7">T</div><div class="cell" data-r="8" data-c="8">Y</div><div class="cell" data-r="8" data-c="9">U</div>
+            <!-- Fila 9 -->
+            <div class="cell" data-r="9" data-c="0">P</div><div class="cell" data-r="9" data-c="1">O</div><div class="cell" data-r="9" data-c="2">I</div><div class="cell" data-r="9" data-c="3">U</div><div class="cell" data-r="9" data-c="4">Y</div><div class="cell" data-r="9" data-c="5">T</div><div class="cell" data-r="9" data-c="6">R</div><div class="cell" data-r="9" data-c="7">E</div><div class="cell" data-r="9" data-c="8">W</div><div class="cell" data-r="9" data-c="9">Q</div>
+          </div>
+
+          <aside class="words-panel">
+            <h3>Palabras a encontrar:</h3>
+            <ul class="word-list" id="ws-word-list">
+              <li class="word-item" data-word="ALGORITMO">ALGORITMO</li>
+              <li class="word-item" data-word="CIENCIA">CIENCIA</li>
+              <li class="word-item" data-word="ESCUELA">ESCUELA</li>
+              <li class="word-item" data-word="LOGICA">LOGICA</li>
+            </ul>
+          </aside>
+        </div>
+
+        <div class="feedback-banner" id="ws-feedback"></div>
+      </article>
+
+      <!-- ACTIVIDAD 2: CRUCIGRAMA INTERACTIVO -->
+      <article class="game-box" id="crossword-activity">
+        <div class="game-header">
+          <h2><span>✏️</span> Crucigrama Pedagógico</h2>
+          <div class="game-stats">
+            <span class="stat-chip" id="cw-progress">Aciertos: 0 / 2 palabras</span>
+            <button class="btn-secondary" id="cw-reset-btn" title="Limpiar respuestas">🔄 Limpiar</button>
+          </div>
+        </div>
+
+        <p class="game-subtitle">
+          Escribe las letras en las casillas correspondientes guiándote por las pistas numéricas.
+        </p>
+
+        <div class="crossword-layout">
+          <div class="crossword" id="cw-grid" aria-label="Cuadrícula interactiva de crucigrama">
+            <!-- Fila 0 -->
+            <div class="square" data-r="0" data-c="0" data-sol="A"><span class="square-num">2</span><input type="text" maxlength="1" aria-label="Casilla 0,0"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+
+            <!-- Fila 1 -->
+            <div class="square" data-r="1" data-c="0" data-sol="P"><input type="text" maxlength="1" aria-label="Casilla 1,0"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+
+            <!-- Fila 2 (Cruce: 1 Horizontal y 2 Vertical) -->
+            <div class="square" data-r="2" data-c="0" data-sol="R"><span class="square-num">1</span><input type="text" maxlength="1" aria-label="Casilla 2,0"></div>
+            <div class="square" data-r="2" data-c="1" data-sol="E"><input type="text" maxlength="1" aria-label="Casilla 2,1"></div>
+            <div class="square" data-r="2" data-c="2" data-sol="C"><input type="text" maxlength="1" aria-label="Casilla 2,2"></div>
+            <div class="square" data-r="2" data-c="3" data-sol="U"><input type="text" maxlength="1" aria-label="Casilla 2,3"></div>
+            <div class="square" data-r="2" data-c="4" data-sol="R"><input type="text" maxlength="1" aria-label="Casilla 2,4"></div>
+            <div class="square" data-r="2" data-c="5" data-sol="S"><input type="text" maxlength="1" aria-label="Casilla 2,5"></div>
+            <div class="square" data-r="2" data-c="6" data-sol="O"><input type="text" maxlength="1" aria-label="Casilla 2,6"></div>
+            <div class="square" data-r="2" data-c="7" data-sol="S"><input type="text" maxlength="1" aria-label="Casilla 2,7"></div>
+
+            <!-- Fila 3 -->
+            <div class="square" data-r="3" data-c="0" data-sol="E"><input type="text" maxlength="1" aria-label="Casilla 3,0"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+
+            <!-- Fila 4 -->
+            <div class="square" data-r="4" data-c="0" data-sol="N"><input type="text" maxlength="1" aria-label="Casilla 4,0"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+
+            <!-- Fila 5 -->
+            <div class="square" data-r="5" data-c="0" data-sol="D"><input type="text" maxlength="1" aria-label="Casilla 5,0"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+
+            <!-- Fila 6 -->
+            <div class="square" data-r="6" data-c="0" data-sol="E"><input type="text" maxlength="1" aria-label="Casilla 6,0"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+
+            <!-- Fila 7 -->
+            <div class="square" data-r="7" data-c="0" data-sol="R"><input type="text" maxlength="1" aria-label="Casilla 7,0"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+            <div class="square square--block"></div>
+          </div>
+
+          <aside class="clues-panel">
+            <div class="clues-section">
+              <h3>Horizontal</h3>
+              <ul class="clue-list">
+                <li class="clue-item" id="clue-h1">
+                  <strong>1.</strong> Materiales, herramientas y medios didácticos empleados en el aula de clases (8 letras).
+                </li>
+              </ul>
+            </div>
+
+            <div class="clues-section">
+              <h3>Vertical</h3>
+              <ul class="clue-list">
+                <li class="clue-item" id="clue-v2">
+                  <strong>2.</strong> Proceso mediante el cual los estudiantes adquieren conocimientos y competencias (8 letras).
+                </li>
+              </ul>
+            </div>
+
+            <div class="game-actions">
+              <button class="btn-action" id="cw-check-btn">Comprobar respuestas</button>
+              <button class="btn-secondary" id="cw-reveal-btn">Ver solución</button>
+            </div>
+
+            <div class="feedback-banner" id="cw-feedback"></div>
+          </aside>
+        </div>
+      </article>
+
+      <div class="h5p-footer-note">
+        <span>💡</span>
+        <span>Esta vista interactiva es ideal para integrar actividades gamificadas en plataformas como Moodle, Canvas, Blackboard o páginas web institucionales.</span>
+      </div>
+    </main>
+  </div>
+
+  <!-- LÓGICA DE JUEGOS INTERACTIVOS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      /* ============================================================
+         1. LÓGICA DE SOPA DE LETRAS
+         ============================================================ */
+      const wsGrid = document.getElementById('ws-grid');
+      const wsCells = wsGrid.querySelectorAll('.cell');
+      const wsProgress = document.getElementById('ws-progress');
+      const wsFeedback = document.getElementById('ws-feedback');
+      const wsResetBtn = document.getElementById('ws-reset-btn');
+      const wordElements = document.querySelectorAll('#ws-word-list .word-item');
+
+      const targetWords = {
+        'ALGORITMO': [[0,0], [0,1], [0,2], [0,3], [0,4], [0,5], [0,6], [0,7], [0,8]],
+        'CIENCIA': [[1,0], [1,1], [1,2], [1,3], [1,4], [1,5], [1,6]],
+        'ESCUELA': [[2,0], [2,1], [2,2], [2,3], [2,4], [2,5], [2,6]],
+        'LOGICA': [[3,0], [3,1], [3,2], [3,3], [3,4], [3,5]]
+      };
+
+      let foundWords = new Set();
+      let selectedCells = [];
+      let isMouseDown = false;
+
+      function updateWsProgress() {
+        wsProgress.textContent = `Palabras: ${foundWords.size} / ${Object.keys(targetWords).length}`;
+        if (foundWords.size === Object.keys(targetWords).length) {
+          wsFeedback.className = 'feedback-banner show success';
+          wsFeedback.innerHTML = '🎉 ¡Excelente trabajo! Has completado la sopa de letras correctamente.';
+        }
+      }
+
+      function checkSelectedWord() {
+        if (selectedCells.length === 0) return;
+
+        const forwardWord = selectedCells.map(c => c.textContent.trim()).join('');
+        const backwardWord = forwardWord.split('').reverse().join('');
+
+        let matched = null;
+        if (targetWords[forwardWord] && !foundWords.has(forwardWord)) {
+          matched = forwardWord;
+        } else if (targetWords[backwardWord] && !foundWords.has(backwardWord)) {
+          matched = backwardWord;
+        }
+
+        if (matched) {
+          foundWords.add(matched);
+          selectedCells.forEach(cell => {
+            cell.classList.remove('selected');
+            cell.classList.add('found');
+          });
+
+          const li = document.querySelector(`.word-item[data-word="${matched}"]`);
+          if (li) li.classList.add('completed');
+
+          updateWsProgress();
+        } else {
+          selectedCells.forEach(cell => cell.classList.remove('selected'));
+        }
+        selectedCells = [];
+      }
+
+      function handleCellSelect(cell) {
+        if (cell.classList.contains('found')) return;
+        if (!selectedCells.includes(cell)) {
+          selectedCells.push(cell);
+          cell.classList.add('selected');
+        }
+      }
+
+      wsCells.forEach(cell => {
+        cell.addEventListener('mousedown', (e) => {
+          e.preventDefault();
+          isMouseDown = true;
+          selectedCells.forEach(c => c.classList.remove('selected'));
+          selectedCells = [];
+          handleCellSelect(cell);
+        });
+
+        cell.addEventListener('mouseenter', () => {
+          if (isMouseDown) handleCellSelect(cell);
+        });
+
+        cell.addEventListener('touchstart', () => {
+          isMouseDown = true;
+          selectedCells.forEach(c => c.classList.remove('selected'));
+          selectedCells = [];
+          handleCellSelect(cell);
+        }, { passive: true });
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isMouseDown) {
+          isMouseDown = false;
+          checkSelectedWord();
+        }
+      });
+
+      wsGrid.addEventListener('touchmove', (e) => {
+        if (!isMouseDown) return;
+        const touch = e.touches[0];
+        const elem = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (elem && elem.classList.contains('cell')) {
+          handleCellSelect(elem);
+        }
+      }, { passive: true });
+
+      window.addEventListener('touchend', () => {
+        if (isMouseDown) {
+          isMouseDown = false;
+          checkSelectedWord();
+        }
+      });
+
+      wsResetBtn.addEventListener('click', () => {
+        foundWords.clear();
+        selectedCells = [];
+        wsCells.forEach(c => c.classList.remove('selected', 'found'));
+        wordElements.forEach(el => el.classList.remove('completed'));
+        wsFeedback.className = 'feedback-banner';
+        updateWsProgress();
+      });
+
+      /* ============================================================
+         2. LÓGICA DE CRUCIGRAMA INTERACTIVO
+         ============================================================ */
+      const cwSquares = document.querySelectorAll('#cw-grid .square:not(.square--block)');
+      const cwCheckBtn = document.getElementById('cw-check-btn');
+      const cwRevealBtn = document.getElementById('cw-reveal-btn');
+      const cwResetBtn = document.getElementById('cw-reset-btn');
+      const cwProgress = document.getElementById('cw-progress');
+      const cwFeedback = document.getElementById('cw-feedback');
+
+      cwSquares.forEach((square) => {
+        const input = square.querySelector('input');
+        if (!input) return;
+
+        input.addEventListener('input', () => {
+          input.value = input.value.toUpperCase();
+          square.classList.remove('correct', 'wrong');
+          if (input.value.length === 1) {
+            focusNextSquare(square);
+          }
+        });
+
+        input.addEventListener('keydown', (e) => {
+          const r = parseInt(square.dataset.r, 10);
+          const c = parseInt(square.dataset.c, 10);
+
+          if (e.key === 'Backspace' && !input.value) {
+            focusPrevSquare(square);
+          } else if (e.key === 'ArrowRight') {
+            findSquare(r, c + 1)?.querySelector('input')?.focus();
+          } else if (e.key === 'ArrowLeft') {
+            findSquare(r, c - 1)?.querySelector('input')?.focus();
+          } else if (e.key === 'ArrowDown') {
+            findSquare(r + 1, c)?.querySelector('input')?.focus();
+          } else if (e.key === 'ArrowUp') {
+            findSquare(r - 1, c)?.querySelector('input')?.focus();
+          }
+        });
+      });
+
+      function findSquare(r, c) {
+        return document.querySelector(`#cw-grid .square[data-r="${r}"][data-c="${c}"]`);
+      }
+
+      function focusNextSquare(currentSquare) {
+        const r = parseInt(currentSquare.dataset.r, 10);
+        const c = parseInt(currentSquare.dataset.c, 10);
+
+        if (r === 2 && c < 7) {
+          const next = findSquare(r, c + 1);
+          if (next) next.querySelector('input')?.focus();
+          return;
+        }
+
+        if (c === 0 && r < 7) {
+          const next = findSquare(r + 1, c);
+          if (next) next.querySelector('input')?.focus();
+        }
+      }
+
+      function focusPrevSquare(currentSquare) {
+        const r = parseInt(currentSquare.dataset.r, 10);
+        const c = parseInt(currentSquare.dataset.c, 10);
+
+        if (r === 2 && c > 0) {
+          const prev = findSquare(r, c - 1);
+          if (prev) prev.querySelector('input')?.focus();
+          return;
+        }
+
+        if (c === 0 && r > 0) {
+          const prev = findSquare(r - 1, c);
+          if (prev) prev.querySelector('input')?.focus();
+        }
+      }
+
+      cwCheckBtn.addEventListener('click', () => {
+        let allCorrect = true;
+        let emptyCount = 0;
+        let correctCount = 0;
+
+        cwSquares.forEach(sq => {
+          const input = sq.querySelector('input');
+          const sol = sq.dataset.sol;
+          const val = input.value.trim().toUpperCase();
+
+          sq.classList.remove('correct', 'wrong');
+
+          if (!val) {
+            emptyCount++;
+            allCorrect = false;
+          } else if (val === sol) {
+            sq.classList.add('correct');
+            correctCount++;
+          } else {
+            sq.classList.add('wrong');
+            allCorrect = false;
+          }
+        });
+
+        let horizOk = true;
+        for (let c = 0; c <= 7; c++) {
+          const sq = findSquare(2, c);
+          if (sq?.querySelector('input')?.value.toUpperCase() !== sq?.dataset.sol) {
+            horizOk = false;
+            break;
+          }
+        }
+
+        let vertOk = true;
+        for (let r = 0; r <= 7; r++) {
+          const sq = findSquare(r, 0);
+          if (sq?.querySelector('input')?.value.toUpperCase() !== sq?.dataset.sol) {
+            vertOk = false;
+            break;
+          }
+        }
+
+        let wordsCompleted = (horizOk ? 1 : 0) + (vertOk ? 1 : 0);
+        cwProgress.textContent = `Aciertos: ${wordsCompleted} / 2 palabras`;
+
+        if (allCorrect) {
+          cwFeedback.className = 'feedback-banner show success';
+          cwFeedback.innerHTML = '🌟 ¡Excelente! Has resuelto todas las pistas del crucigrama a la perfección.';
+        } else if (emptyCount > 0 && correctCount === 0) {
+          cwFeedback.className = 'feedback-banner show info';
+          cwFeedback.innerHTML = '✏️ Completa las casillas con las letras correspondientes antes de comprobar.';
+        } else {
+          cwFeedback.className = 'feedback-banner show info';
+          cwFeedback.innerHTML = `⚠️ Tienes ${correctCount} de ${cwSquares.length} letras correctas. Revisa las casillas en rojo.`;
+        }
+      });
+
+      cwRevealBtn.addEventListener('click', () => {
+        cwSquares.forEach(sq => {
+          const input = sq.querySelector('input');
+          input.value = sq.dataset.sol;
+          sq.classList.remove('wrong');
+          sq.classList.add('correct');
+        });
+        cwProgress.textContent = `Aciertos: 2 / 2 palabras`;
+        cwFeedback.className = 'feedback-banner show success';
+        cwFeedback.innerHTML = '💡 Se ha revelado la solución: Horizontal 1 es <strong>RECURSOS</strong> y Vertical 2 es <strong>APRENDER</strong>.';
+      });
+
+      cwResetBtn.addEventListener('click', () => {
+        cwSquares.forEach(sq => {
+          const input = sq.querySelector('input');
+          input.value = '';
+          sq.classList.remove('correct', 'wrong');
+        });
+        cwProgress.textContent = 'Aciertos: 0 / 2 palabras';
+        cwFeedback.className = 'feedback-banner';
+      });
+    });
+  </script>
+</body>
+</html>
