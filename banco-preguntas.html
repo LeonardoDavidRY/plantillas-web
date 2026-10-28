@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cuestionario: Matemáticas y Razonamiento Lógico | Aula Virtual</title>
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <!-- CSS propio e independiente para esta plantilla estilo Moodle LMS -->
   <link rel="stylesheet" href="assets/banco-preguntas.css" />
 </head>
@@ -13,7 +15,9 @@
   <header class="lms-navbar">
     <div class="lms-nav-container">
       <a href="#" class="lms-brand">
-        <div class="lms-brand-logo">M</div>
+        <div class="lms-brand-logo">
+          <i class="bi bi-mortarboard-fill"></i>
+        </div>
         <div>
           <span class="lms-brand-title">Campus Virtual Institucional</span>
           <span class="lms-brand-sub">Sistema de Gestión de Aprendizaje (LMS)</span>
@@ -21,9 +25,11 @@
       </a>
 
       <div class="lms-user-menu">
-        <a class="lms-back-link" href="index.html">← Volver a la galería</a>
+        <a class="lms-back-link" href="index.html">
+          <i class="bi bi-arrow-left"></i> Volver a la galería
+        </a>
         <div class="user-profile">
-          <div class="user-avatar">ES</div>
+          <div class="user-avatar"><i class="bi bi-person-fill"></i></div>
           <span>Estudiante Demo</span>
         </div>
       </div>
@@ -34,7 +40,7 @@
   <nav class="lms-breadcrumb-bar" aria-label="Miga de pan">
     <div class="lms-container">
       <ul class="lms-breadcrumbs">
-        <li><a href="#">Área personal</a></li>
+        <li><a href="#"><i class="bi bi-house-door-fill"></i> Área personal</a></li>
         <li><a href="#">Mis cursos</a></li>
         <li><a href="#">MAT-101: Matemáticas Fundamentales</a></li>
         <li><a href="#">Unidad 2: Álgebra y Geometría</a></li>
@@ -48,12 +54,12 @@
     <div class="lms-container">
       <div class="header-content">
         <div class="header-title-area">
-          <span class="exam-badge">Cuestionario en línea</span>
+          <span class="exam-badge"><i class="bi bi-ui-checks"></i> Cuestionario en línea</span>
           <h1>Evaluación Formativa: Banco de Matemáticas y Geometría</h1>
           <div class="header-meta">
-            <span>📚 <strong>Materia:</strong> Geometría y Álgebra</span>
-            <span>⏱️ <strong>Intentos permitidos:</strong> 2</span>
-            <span>📊 <strong>Método de calificación:</strong> Calificación más alta</span>
+            <span><i class="bi bi-journal-bookmark-fill"></i> <strong>Materia:</strong> Geometría y Álgebra</span>
+            <span><i class="bi bi-stopwatch"></i> <strong>Intentos permitidos:</strong> 2</span>
+            <span><i class="bi bi-bar-chart-fill"></i> <strong>Método de calificación:</strong> Calificación más alta</span>
           </div>
         </div>
       </div>
@@ -72,7 +78,9 @@
             <h2 class="question-number">Pregunta 1</h2>
             <span class="question-state" id="q1-state">Sin responder aún</span>
             <div class="question-points">Puntúa como 1,00</div>
-            <a href="#flag" class="flag-question" onclick="toggleFlag(event, this)">🚩 Marcar pregunta</a>
+            <a href="#flag" class="flag-question" onclick="toggleFlag(event, this)">
+              <i class="bi bi-flag"></i> Marcar pregunta
+            </a>
           </div>
 
           <div class="question-content-col">
@@ -112,7 +120,9 @@
             <h2 class="question-number">Pregunta 2</h2>
             <span class="question-state" id="q2-state">Sin responder aún</span>
             <div class="question-points">Puntúa como 1,00</div>
-            <a href="#flag" class="flag-question" onclick="toggleFlag(event, this)">🚩 Marcar pregunta</a>
+            <a href="#flag" class="flag-question" onclick="toggleFlag(event, this)">
+              <i class="bi bi-flag"></i> Marcar pregunta
+            </a>
           </div>
 
           <div class="question-content-col">
@@ -152,7 +162,9 @@
             <h2 class="question-number">Pregunta 3</h2>
             <span class="question-state" id="q3-state">Sin responder aún</span>
             <div class="question-points">Puntúa como 1,00</div>
-            <a href="#flag" class="flag-question" onclick="toggleFlag(event, this)">🚩 Marcar pregunta</a>
+            <a href="#flag" class="flag-question" onclick="toggleFlag(event, this)">
+              <i class="bi bi-flag"></i> Marcar pregunta
+            </a>
           </div>
 
           <div class="question-content-col">
@@ -196,7 +208,7 @@
           </h3>
 
           <div class="quiz-timer">
-            <span>⏱️</span>
+            <i class="bi bi-clock-history"></i>
             <span>Tiempo restante: <strong>44:20</strong></span>
           </div>
 
@@ -218,10 +230,12 @@
           </div>
 
           <button class="btn-finish-quiz" id="submit-quiz-btn" onclick="gradeQuiz()">
+            <i class="bi bi-check2-circle"></i>
             <span>Terminar intento...</span>
           </button>
 
           <button class="btn-reset-quiz" id="reset-quiz-btn" onclick="resetQuiz()">
+            <i class="bi bi-arrow-counterclockwise"></i>
             <span>Limpiar respuestas</span>
           </button>
         </div>
@@ -232,21 +246,19 @@
   <footer class="lms-footer">
     <div class="lms-container">
       <p>Usted se ha identificado como <strong>Estudiante Demo</strong> (Cerrar sesión)</p>
-      <p style="font-size: 0.8rem; margin: 0.25rem 0 0;">Plataforma Virtual Educativa • Adaptada con interfaz Boost LMS</p>
+      <p style="font-size: 0.8rem; margin: 0.25rem 0 0;">Plataforma Virtual Educativa • Adaptada con interfaz Boost LMS y Bootstrap Icons</p>
     </div>
   </footer>
 
   <!-- Lógica interactiva del cuestionario Moodle -->
   <script>
     function markAnswered(qNum) {
-      // Actualizar etiqueta lateral de la pregunta
       const stateEl = document.getElementById(`q${qNum}-state`);
       if (stateEl) {
         stateEl.textContent = 'Respuesta guardada';
         stateEl.classList.add('answered');
       }
 
-      // Actualizar botón en el bloque de navegación Moodle
       const navBtn = document.getElementById(`nav-btn-${qNum}`);
       if (navBtn) {
         navBtn.classList.add('completed');
@@ -257,11 +269,11 @@
       e.preventDefault();
       if (el.classList.contains('flagged')) {
         el.classList.remove('flagged');
-        el.innerHTML = '🚩 Marcar pregunta';
+        el.innerHTML = '<i class="bi bi-flag"></i> Marcar pregunta';
         el.style.color = 'var(--lms-primary)';
       } else {
         el.classList.add('flagged');
-        el.innerHTML = '🚩 Marcada';
+        el.innerHTML = '<i class="bi bi-flag-fill"></i> Marcada';
         el.style.color = '#dc2626';
       }
     }
@@ -278,12 +290,11 @@
         const feedbackEl = document.getElementById(`q${qNum}-feedback`);
         const options = q.querySelectorAll('.answer-option');
 
-        // Resetear clases de opciones
         options.forEach(opt => opt.classList.remove('is-correct', 'is-wrong'));
 
         if (!selectedRadio) {
           feedbackEl.className = 'moodle-feedback show error';
-          feedbackEl.innerHTML = '⚠️ <strong>Sin responder:</strong> No seleccionaste ninguna opción.';
+          feedbackEl.innerHTML = '<i class="bi bi-exclamation-triangle-fill"></i> <strong>Sin responder:</strong> No seleccionaste ninguna opción.';
           return;
         }
 
@@ -294,22 +305,20 @@
           correctAnswers++;
           selectedLabel.classList.add('is-correct');
           feedbackEl.className = 'moodle-feedback show success';
-          feedbackEl.innerHTML = '✅ <strong>Correcto:</strong> Puntuación 1,00 sobre 1,00. ¡Muy bien fundamentado!';
+          feedbackEl.innerHTML = '<i class="bi bi-check-circle-fill"></i> <strong>Correcto:</strong> Puntuación 1,00 sobre 1,00. ¡Muy bien fundamentado!';
         } else {
           selectedLabel.classList.add('is-wrong');
-          // Resaltar la correcta
           const correctRadio = q.querySelector(`input[name="q${qNum}"][value="${correctVal}"]`);
           if (correctRadio) {
             correctRadio.closest('.answer-option').classList.add('is-correct');
           }
           feedbackEl.className = 'moodle-feedback show error';
-          feedbackEl.innerHTML = `❌ <strong>Incorrecto:</strong> La respuesta correcta era la opción (${correctVal.toLowerCase()}).`;
+          feedbackEl.innerHTML = `<i class="bi bi-x-circle-fill"></i> <strong>Incorrecto:</strong> La respuesta correcta era la opción (${correctVal.toLowerCase()}).`;
         }
       });
 
-      // Calificación final en escala institucional (0 a 10 o 0 a 5)
       const grade = ((correctAnswers / totalQuestions) * 5.0).toFixed(1);
-      alert(`📊 Intento finalizado:\nCalificación obtenida: ${grade} / 5.0\nRespuestas correctas: ${correctAnswers} de ${totalQuestions}`);
+      alert(`Intento finalizado:\nCalificación obtenida: ${grade} / 5.0\nRespuestas correctas: ${correctAnswers} de ${totalQuestions}`);
     }
 
     function resetQuiz() {

@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Actividades Gamificadas estilo H5P | Recursos Interactivos de Aula</title>
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <!-- CSS propio e independiente para esta plantilla -->
   <link rel="stylesheet" href="assets/h5p-actividades.css" />
 </head>
@@ -12,8 +14,12 @@
   <!-- Barra superior de navegación y retorno -->
   <header class="h5p-topbar">
     <div class="h5p-container h5p-nav-row">
-      <a class="h5p-back-link" href="index.html">← Volver a la galería</a>
-      <span class="h5p-badge-header">🎮 Gamificación Educativa • Compatible H5P / LMS</span>
+      <a class="h5p-back-link" href="index.html">
+        <i class="bi bi-arrow-left"></i> Volver a la galería
+      </a>
+      <span class="h5p-badge-header">
+        <i class="bi bi-controller"></i> Gamificación Educativa • Compatible H5P / LMS
+      </span>
     </div>
   </header>
 
@@ -28,10 +34,12 @@
       <!-- ACTIVIDAD 1: SOPA DE LETRAS INTERACTIVA -->
       <article class="game-box" id="wordsearch-activity">
         <div class="game-header">
-          <h2><span>🔍</span> Sopa de Letras: Vocabulario Tecnológico</h2>
+          <h2><i class="bi bi-search" style="color:#1d4ed8;"></i> Sopa de Letras: Vocabulario Tecnológico</h2>
           <div class="game-stats">
             <span class="stat-chip" id="ws-progress">Palabras: 0 / 4</span>
-            <button class="btn-secondary" id="ws-reset-btn" title="Reiniciar actividad">🔄 Reiniciar</button>
+            <button class="btn-secondary" id="ws-reset-btn" title="Reiniciar actividad">
+              <i class="bi bi-arrow-counterclockwise"></i> Reiniciar
+            </button>
           </div>
         </div>
 
@@ -80,10 +88,12 @@
       <!-- ACTIVIDAD 2: CRUCIGRAMA INTERACTIVO -->
       <article class="game-box" id="crossword-activity">
         <div class="game-header">
-          <h2><span>✏️</span> Crucigrama Pedagógico</h2>
+          <h2><i class="bi bi-pencil-square" style="color:#1d4ed8;"></i> Crucigrama Pedagógico</h2>
           <div class="game-stats">
             <span class="stat-chip" id="cw-progress">Aciertos: 0 / 2 palabras</span>
-            <button class="btn-secondary" id="cw-reset-btn" title="Limpiar respuestas">🔄 Limpiar</button>
+            <button class="btn-secondary" id="cw-reset-btn" title="Limpiar respuestas">
+              <i class="bi bi-arrow-counterclockwise"></i> Limpiar
+            </button>
           </div>
         </div>
 
@@ -194,8 +204,12 @@
             </div>
 
             <div class="game-actions">
-              <button class="btn-action" id="cw-check-btn">Comprobar respuestas</button>
-              <button class="btn-secondary" id="cw-reveal-btn">Ver solución</button>
+              <button class="btn-action" id="cw-check-btn">
+                <i class="bi bi-check-circle-fill"></i> Comprobar respuestas
+              </button>
+              <button class="btn-secondary" id="cw-reveal-btn">
+                <i class="bi bi-eye-fill"></i> Ver solución
+              </button>
             </div>
 
             <div class="feedback-banner" id="cw-feedback"></div>
@@ -204,7 +218,7 @@
       </article>
 
       <div class="h5p-footer-note">
-        <span>💡</span>
+        <i class="bi bi-lightbulb-fill" style="color: #f59e0b; font-size: 1.1rem;"></i>
         <span>Esta vista interactiva es ideal para integrar actividades gamificadas en plataformas como Moodle, Canvas, Blackboard o páginas web institucionales.</span>
       </div>
     </main>
@@ -238,7 +252,7 @@
         wsProgress.textContent = `Palabras: ${foundWords.size} / ${Object.keys(targetWords).length}`;
         if (foundWords.size === Object.keys(targetWords).length) {
           wsFeedback.className = 'feedback-banner show success';
-          wsFeedback.innerHTML = '🎉 ¡Excelente trabajo! Has completado la sopa de letras correctamente.';
+          wsFeedback.innerHTML = '<i class="bi bi-trophy-fill"></i> ¡Excelente trabajo! Has completado la sopa de letras correctamente.';
         }
       }
 
@@ -456,13 +470,13 @@
 
         if (allCorrect) {
           cwFeedback.className = 'feedback-banner show success';
-          cwFeedback.innerHTML = '🌟 ¡Excelente! Has resuelto todas las pistas del crucigrama a la perfección.';
+          cwFeedback.innerHTML = '<i class="bi bi-star-fill"></i> ¡Excelente! Has resuelto todas las pistas del crucigrama a la perfección.';
         } else if (emptyCount > 0 && correctCount === 0) {
           cwFeedback.className = 'feedback-banner show info';
-          cwFeedback.innerHTML = '✏️ Completa las casillas con las letras correspondientes antes de comprobar.';
+          cwFeedback.innerHTML = '<i class="bi bi-pencil-fill"></i> Completa las casillas con las letras correspondientes antes de comprobar.';
         } else {
           cwFeedback.className = 'feedback-banner show info';
-          cwFeedback.innerHTML = `⚠️ Tienes ${correctCount} de ${cwSquares.length} letras correctas. Revisa las casillas en rojo.`;
+          cwFeedback.innerHTML = `<i class="bi bi-exclamation-triangle-fill"></i> Tienes ${correctCount} de ${cwSquares.length} letras correctas. Revisa las casillas en rojo.`;
         }
       });
 
@@ -475,7 +489,7 @@
         });
         cwProgress.textContent = `Aciertos: 2 / 2 palabras`;
         cwFeedback.className = 'feedback-banner show success';
-        cwFeedback.innerHTML = '💡 Se ha revelado la solución: Horizontal 1 es <strong>RECURSOS</strong> y Vertical 2 es <strong>APRENDER</strong>.';
+        cwFeedback.innerHTML = '<i class="bi bi-lightbulb-fill"></i> Se ha revelado la solución: Horizontal 1 es <strong>RECURSOS</strong> y Vertical 2 es <strong>APRENDER</strong>.';
       });
 
       cwResetBtn.addEventListener('click', () => {
