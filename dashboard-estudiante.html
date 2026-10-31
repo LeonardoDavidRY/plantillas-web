@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal del Estudiante | Aula Virtual & Seguimiento Académico</title>
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- CSS propio e independiente para esta plantilla -->
+  <link rel="stylesheet" href="assets/dashboard-estudiante.css" />
+</head>
+<body>
+
+  <div class="dashboard-app">
+    <!-- SIDEBAR DE NAVEGACIÓN -->
+    <aside class="dash-sidebar">
+      <div>
+        <a href="#" class="dash-brand">
+          <div class="dash-brand-icon">
+            <i class="bi bi-mortarboard-fill"></i>
+          </div>
+          <div>
+            <span class="dash-brand-title">Campus Virtual</span>
+            <span class="dash-brand-sub">Portal de Alumnos</span>
+          </div>
+        </a>
+
+        <ul class="dash-menu">
+          <li class="dash-menu-item active">
+            <a href="#"><i class="bi bi-speedometer2"></i> Mi Dashboard</a>
+          </li>
+          <li class="dash-menu-item">
+            <a href="banco-preguntas.html"><i class="bi bi-journal-check"></i> Evaluaciones <span class="menu-badge">2 Pendientes</span></a>
+          </li>
+          <li class="dash-menu-item">
+            <a href="tarjetas-didacticas.html"><i class="bi bi-card-text"></i> Repaso & Flashcards</a>
+          </li>
+          <li class="dash-menu-item">
+            <a href="h5p-actividades.html"><i class="bi bi-controller"></i> Retos Gamificados</a>
+          </li>
+          <li class="dash-menu-item">
+            <a href="#"><i class="bi bi-calendar3"></i> Horario de Clases</a>
+          </li>
+          <li class="dash-menu-item">
+            <a href="#"><i class="bi bi-award"></i> Calificaciones & Boletín</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Perfil de usuario inferior -->
+      <div class="dash-user-card">
+        <div class="user-avatar-dash">ES</div>
+        <div>
+          <h4 class="user-meta-name">Estudiante Demo</h4>
+          <p class="user-meta-role">Grado 11° • Matrícula Activa</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ÁREA PRINCIPAL DEL DASHBOARD -->
+    <main class="dash-main-content">
+      <!-- Topbar Header -->
+      <header class="dash-header-row">
+        <div class="dash-greeting">
+          <h1>¡Hola de nuevo, Estudiante! 👋</h1>
+          <p>Bienvenido a tu panel de seguimiento. Tienes 2 evaluaciones pendientes para esta semana.</p>
+        </div>
+
+        <div class="dash-topbar-actions">
+          <a class="btn-dash-back" href="index.html">
+            <i class="bi bi-arrow-left"></i> Galería de plantillas
+          </a>
+          <button class="btn-notifications" title="Notificaciones" onclick="alert('Tienes 2 avisos académicos sin leer.')">
+            <i class="bi bi-bell"></i>
+            <span class="notif-dot"></span>
+          </button>
+        </div>
+      </header>
+
+      <!-- TARJETAS DE MÉTRICAS (KPIS) -->
+      <section class="dash-stats-grid">
+        <div class="dash-stat-card">
+          <div class="stat-icon-wrap stat-icon--blue">
+            <i class="bi bi-book-half"></i>
+          </div>
+          <div class="stat-val-title">
+            <strong>6</strong>
+            <span>Materias Inscritas</span>
+          </div>
+        </div>
+
+        <div class="dash-stat-card">
+          <div class="stat-icon-wrap stat-icon--green">
+            <i class="bi bi-award-fill"></i>
+          </div>
+          <div class="stat-val-title">
+            <strong>4.7 / 5.0</strong>
+            <span>Promedio Ponderado</span>
+          </div>
+        </div>
+
+        <div class="dash-stat-card">
+          <div class="stat-icon-wrap stat-icon--amber">
+            <i class="bi bi-hourglass-split"></i>
+          </div>
+          <div class="stat-val-title">
+            <strong>82%</strong>
+            <span>Progreso del Periodo</span>
+          </div>
+        </div>
+
+        <div class="dash-stat-card">
+          <div class="stat-icon-wrap stat-icon--purple">
+            <i class="bi bi-trophy-fill"></i>
+          </div>
+          <div class="stat-val-title">
+            <strong>1,450 pts</strong>
+            <span>Puntos Gamificados</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUERPO DEL DASHBOARD EN 2 COLUMNAS -->
+      <div class="dash-content-grid">
+        <!-- Columna Izquierda: Cursos Activos -->
+        <section>
+          <div class="dash-section-title">
+            <h2><i class="bi bi-mortarboard" style="color:var(--dash-primary);"></i> Mis Cursos Activos</h2>
+            <span style="font-size:0.85rem; font-weight:700; color:var(--dash-primary); cursor:pointer;">Ver todos (6)</span>
+          </div>
+
+          <div class="dash-courses-list">
+            <!-- Curso 1 -->
+            <article class="course-card-dash">
+              <div class="course-card-header">
+                <div>
+                  <span class="course-badge badge-math">Ciencias Exactas</span>
+                  <h3>Matemáticas & Álgebra Lineal</h3>
+                  <p class="course-teacher"><i class="bi bi-person"></i> Prof. Carlos Mendoza • Lun y Mié</p>
+                </div>
+                <div class="course-grade-badge">Nota: 4.8</div>
+              </div>
+              <div class="course-progress-wrap">
+                <div class="progress-meta">
+                  <span>Progreso de lecciones</span>
+                  <span>78%</span>
+                </div>
+                <div class="dash-progress-track">
+                  <div class="dash-progress-fill" style="width: 78%;"></div>
+                </div>
+              </div>
+              <div class="course-actions-footer">
+                <span style="font-size: 0.8rem; color: var(--dash-muted);"><i class="bi bi-calendar-event"></i> Próxima clase: Mañana 8:00 AM</span>
+                <a href="banco-preguntas.html" class="btn-open-course">Ir a la materia <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </article>
+
+            <!-- Curso 2 -->
+            <article class="course-card-dash">
+              <div class="course-card-header">
+                <div>
+                  <span class="course-badge badge-code">Tecnología & STEAM</span>
+                  <h3>Programación & Algoritmos</h3>
+                  <p class="course-teacher"><i class="bi bi-person"></i> Ing. Diana Restrepo • Mar y Jue</p>
+                </div>
+                <div class="course-grade-badge">Nota: 4.9</div>
+              </div>
+              <div class="course-progress-wrap">
+                <div class="progress-meta">
+                  <span>Progreso de lecciones</span>
+                  <span>92%</span>
+                </div>
+                <div class="dash-progress-track">
+                  <div class="dash-progress-fill" style="width: 92%; background: linear-gradient(90deg, #7c3aed, #a855f7);"></div>
+                </div>
+              </div>
+              <div class="course-actions-footer">
+                <span style="font-size: 0.8rem; color: var(--dash-muted);"><i class="bi bi-calendar-event"></i> Próxima clase: Jueves 10:00 AM</span>
+                <a href="tarjetas-didacticas.html" class="btn-open-course">Ir a la materia <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </article>
+
+            <!-- Curso 3 -->
+            <article class="course-card-dash">
+              <div class="course-card-header">
+                <div>
+                  <span class="course-badge badge-science">Ciencias Naturales</span>
+                  <h3>Física Mecánica & Laboratorio</h3>
+                  <p class="course-teacher"><i class="bi bi-person"></i> Lic. Roberto Gómez • Viernes</p>
+                </div>
+                <div class="course-grade-badge">Nota: 4.5</div>
+              </div>
+              <div class="course-progress-wrap">
+                <div class="progress-meta">
+                  <span>Progreso de lecciones</span>
+                  <span>65%</span>
+                </div>
+                <div class="dash-progress-track">
+                  <div class="dash-progress-fill" style="width: 65%; background: linear-gradient(90deg, #16a34a, #4ade80);"></div>
+                </div>
+              </div>
+              <div class="course-actions-footer">
+                <span style="font-size: 0.8rem; color: var(--dash-muted);"><i class="bi bi-calendar-event"></i> Próxima clase: Viernes 7:00 AM</span>
+                <a href="h5p-actividades.html" class="btn-open-course">Ir a la materia <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Columna Derecha: Tareas Pendientes y Calendario -->
+        <aside class="dash-sidebar-panel">
+          <!-- Tareas por Entregar -->
+          <div class="panel-white">
+            <h3><i class="bi bi-check2-square" style="color:var(--dash-primary);"></i> Tareas Pendientes</h3>
+            <ul class="tasks-timeline-list">
+              <li class="task-item">
+                <div class="task-checkbox-wrap">
+                  <input type="checkbox" id="task1">
+                </div>
+                <div class="task-info">
+                  <h4>Taller de Razonamiento Lógico</h4>
+                  <p>Materia: Álgebra • 5 ejercicios prácticos</p>
+                  <span class="task-due-date"><i class="bi bi-clock"></i> Vence hoy, 11:59 PM</span>
+                </div>
+              </li>
+
+              <li class="task-item">
+                <div class="task-checkbox-wrap">
+                  <input type="checkbox" id="task2">
+                </div>
+                <div class="task-info">
+                  <h4>Informe de Laboratorio: Péndulo</h4>
+                  <p>Materia: Física • Formato IEEE</p>
+                  <span class="task-due-date" style="background:#fee2e2; color:#991b1b;"><i class="bi bi-exclamation-circle"></i> Vence mañana</span>
+                </div>
+              </li>
+
+              <li class="task-item">
+                <div class="task-checkbox-wrap">
+                  <input type="checkbox" id="task3" checked>
+                </div>
+                <div class="task-info">
+                  <h4 style="text-decoration:line-through; color:#94a3b8;">Quiz Virtual de Vocabulario</h4>
+                  <p>Completado con éxito (5.0 / 5.0)</p>
+                  <span class="task-due-date" style="background:#dcfce7; color:#166534;"><i class="bi bi-check"></i> Entregado</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Próximos Eventos / Exámenes -->
+          <div class="panel-white">
+            <h3><i class="bi bi-calendar-event" style="color:var(--dash-primary);"></i> Calendario Académico</h3>
+            <div class="events-list">
+              <div class="event-item">
+                <div class="event-date-box">
+                  <strong>04</strong>
+                  <span>Nov</span>
+                </div>
+                <div class="event-info">
+                  <h5>Examen Parcial de Álgebra</h5>
+                  <span>08:00 AM • Aula Virtual 201</span>
+                </div>
+              </div>
+
+              <div class="event-item">
+                <div class="event-date-box" style="background:#fef3c7; color:#b45309;">
+                  <strong>08</strong>
+                  <span>Nov</span>
+                </div>
+                <div class="event-info">
+                  <h5>Feria de Robótica y Ciencia STEAM</h5>
+                  <span>09:30 AM • Auditorio Principal</span>
+                </div>
+              </div>
+
+              <div class="event-item">
+                <div class="event-date-box" style="background:#ede9fe; color:#6d28d9;">
+                  <strong>15</strong>
+                  <span>Nov</span>
+                </div>
+                <div class="event-info">
+                  <h5>Cierre de Calificaciones Periodo 4</h5>
+                  <span>Publicación de boletines en línea</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>
+

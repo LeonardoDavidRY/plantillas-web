@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ruleta de Retos & Preguntas de Aula | Gamificación Dinámica</title>
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- CSS propio e independiente para esta plantilla -->
+  <link rel="stylesheet" href="assets/ruleta-retos.css" />
+</head>
+<body>
+
+  <!-- Barra superior de navegación y retorno -->
+  <header class="spin-topbar">
+    <div class="spin-container spin-nav">
+      <a class="spin-back-link" href="index.html">
+        <i class="bi bi-arrow-left"></i> Volver a la galería
+      </a>
+      <span class="spin-badge-header">
+        <i class="bi bi-controller"></i> Dinámica de Aula en Vivo • Gamificación
+      </span>
+    </div>
+  </header>
+
+  <!-- Encabezado de la Actividad -->
+  <div class="spin-container">
+    <header class="spin-header">
+      <span class="spin-tag"><i class="bi bi-bullseye"></i> Participación Activa & Aleatoria</span>
+      <h1>Ruleta de Preguntas y Desafíos de Aula</h1>
+      <p>Herramienta visual para proyectar en clases presenciales o videoconferencias. Gira la ruleta, asigna retos en tiempo real y lleva el marcador de puntos por equipos.</p>
+    </header>
+
+    <main class="spinner-main-grid">
+      <!-- Columna Izquierda: Escenario de la Ruleta -->
+      <section class="wheel-stage">
+        <div class="wheel-outer-wrapper">
+          <!-- Indicador superior -->
+          <div class="wheel-pointer"></div>
+
+          <!-- Canvas de la Ruleta -->
+          <canvas id="wheel-canvas" width="380" height="380"></canvas>
+
+          <!-- Botón central de giro -->
+          <button class="wheel-center-button" id="center-spin-btn" onclick="spinWheel()" title="¡Haz clic para girar!">
+            <i class="bi bi-arrow-clockwise" style="font-size:1.3rem;"></i>
+            <span>GIRAR</span>
+          </button>
+        </div>
+
+        <!-- Botonera de control -->
+        <div class="wheel-controls">
+          <button class="btn-spin-action" id="main-spin-btn" onclick="spinWheel()">
+            <i class="bi bi-play-circle-fill"></i> Girar Ruleta
+          </button>
+          <button class="btn-spin-secondary" onclick="resetGameSession()">
+            <i class="bi bi-arrow-counterclockwise"></i> Reiniciar Retos
+          </button>
+        </div>
+      </section>
+
+      <!-- Columna Derecha: Tarjeta de Desafío & Marcador -->
+      <aside class="spin-info-side">
+        <!-- Tarjeta de Reto Obtenido -->
+        <article class="challenge-card" id="challenge-display">
+          <span class="challenge-badge" id="challenge-category">Categoría: En Espera</span>
+          <h2 class="challenge-title" id="challenge-title">¿Listo para el desafío?</h2>
+          <p class="challenge-prompt" id="challenge-prompt">
+            Haz girar la ruleta para seleccionar aleatoriamente una categoría y descubrir la pregunta o reto que el equipo deberá responder.
+          </p>
+
+          <!-- Cuenta regresiva de respuesta -->
+          <div class="quick-timer-box">
+            <span class="timer-label"><i class="bi bi-stopwatch"></i> Tiempo de respuesta:</span>
+            <span class="timer-countdown" id="spin-countdown">30s</span>
+            <button class="btn-spin-secondary" id="timer-start-btn" onclick="startTimer30s()" style="padding:0.35rem 0.75rem; font-size:0.8rem;">
+              <i class="bi bi-play-fill"></i> Iniciar
+            </button>
+          </div>
+        </article>
+
+        <!-- Marcador de Equipos del Aula -->
+        <div class="scoreboard-box">
+          <h3><i class="bi bi-trophy" style="color:#f59e0b;"></i> Marcador de Equipos</h3>
+          <div class="teams-grid">
+            <!-- Equipo A -->
+            <div class="team-score-card">
+              <div class="team-name">Equipo Titanes</div>
+              <div class="team-points" id="score-team-a">0</div>
+              <button class="btn-point-add" onclick="addPoint('a')">+100 Pts</button>
+            </div>
+
+            <!-- Equipo B -->
+            <div class="team-score-card">
+              <div class="team-name">Equipo Innovadores</div>
+              <div class="team-points" id="score-team-b">0</div>
+              <button class="btn-point-add" onclick="addPoint('b')">+100 Pts</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <footer class="spin-footer">
+    <div class="spin-container">
+      <p><strong>Ruleta de Participación Interactiva</strong> • Compatible con pizarras inteligentes, OBS Studio y pantallas interactivas.</p>
+    </div>
+  </footer>
+
+  <!-- Script interactivo de la Ruleta en Canvas -->
+  <script>
+    const segments = [
+      {
+        label: "Ciencia",
+        color: "#06b6d4",
+        category: "Ciencias & Naturaleza",
+        challenges: [
+          "Explica en 30 segundos cómo se produce el efecto invernadero.",
+          "Nombra los tres estados principales de la materia y un ejemplo de cambio de fase.",
+          "¿Cuál es la función principal de los glóbulos rojos en la sangre?"
+        ]
+      },
+      {
+        label: "Matemática",
+        color: "#f59e0b",
+        category: "Lógica & Matemáticas",
+        challenges: [
+          "Calcula mentalmente: Si un producto cuesta $80 y tiene 25% de descuento, ¿cuál es su precio?",
+          "¿Cómo se define el perímetro de una figura geométrica y en qué unidades se mide?",
+          "Menciona la regla de signos para la multiplicación de números negativos."
+        ]
+      },
+      {
+        label: "Tecnología",
+        color: "#8b5cf6",
+        category: "Tecnología & STEAM",
+        challenges: [
+          "Menciona 2 diferencias entre software y hardware con ejemplos de la vida real.",
+          "¿Qué es un algoritmo y en qué se parece a una receta de cocina?",
+          "¿Qué medidas de seguridad digital debemos tener con nuestras contraseñas?"
+        ]
+      },
+      {
+        label: "Historia",
+        color: "#ec4899",
+        category: "Historia & Humanidades",
+        challenges: [
+          "¿Por qué la invención de la imprenta cambió la difusión del conocimiento en el mundo?",
+          "Nombra dos civilizaciones antiguas y su principal aporte arquitectónico o cultural.",
+          "Explica qué es una fuente primaria en la investigación histórica."
+        ]
+      },
+      {
+        label: "Reto Creativo",
+        color: "#10b981",
+        category: "Creatividad & Oratoria",
+        challenges: [
+          "Convence a la clase en 30 segundos de adoptar un hábito saludable.",
+          "Describe un objeto cotidiano sin decir su nombre ni para qué sirve hasta que adivinen.",
+          "Improvisa un eslogan motivacional para el equipo rival."
+        ]
+      },
+      {
+        label: "Desafío Exprés",
+        color: "#f43f5e",
+        category: "Reto Rápido",
+        challenges: [
+          "Nombra 5 países de América del Sur en menos de 10 segundos.",
+          "Deletrea la palabra 'E-S-P-E-C-I-F-I-C-A-C-I-O-N' sin equivocarte.",
+          "Menciona 4 elementos de la tabla periódica sin dudar."
+        ]
+      }
+    ];
+
+    const canvas = document.getElementById("wheel-canvas");
+    const ctx = canvas.getContext("2d");
+    const width = canvas.width;
+    const height = canvas.height;
+    const radius = width / 2;
+    let currentAngle = 0;
+    let isSpinning = false;
+
+    // Dibujar los sectores de la ruleta
+    function drawWheel() {
+      const numSegments = segments.length;
+      const arcSize = (2 * Math.PI) / numSegments;
+
+      ctx.clearRect(0, 0, width, height);
+
+      segments.forEach((seg, i) => {
+        const startAngle = i * arcSize + currentAngle;
+        const endAngle = startAngle + arcSize;
+
+        // Sector circular
+        ctx.beginPath();
+        ctx.moveTo(radius, radius);
+        ctx.arc(radius, radius, radius - 6, startAngle, endAngle);
+        ctx.fillStyle = seg.color;
+        ctx.fill();
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        // Texto del sector
+        ctx.save();
+        ctx.translate(radius, radius);
+        ctx.rotate(startAngle + arcSize / 2);
+        ctx.textAlign = "right";
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 15px -apple-system, sans-serif";
+        ctx.shadowColor = "rgba(0,0,0,0.6)";
+        ctx.shadowBlur = 4;
+        ctx.fillText(seg.label, radius - 25, 5);
+        ctx.restore();
+      });
+    }
+
+    drawWheel();
+
+    // Animación de Giro de la Ruleta
+    function spinWheel() {
+      if (isSpinning) return;
+      isSpinning = true;
+
+      document.getElementById("main-spin-btn").disabled = true;
+      document.getElementById("center-spin-btn").style.pointerEvents = "none";
+      clearInterval(timerInterval);
+      document.getElementById("spin-countdown").textContent = "30s";
+
+      // Cálculo de vueltas aleatorias (entre 5 y 8 vueltas completas + sector)
+      const spinAngle = Math.random() * 360 + 360 * 5;
+      const duration = 4000;
+      const startTime = performance.now();
+      const initialAngle = currentAngle;
+      const targetAngleRad = (spinAngle * Math.PI) / 180;
+
+      function animateSpin(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing cúbico desacelerado (ease-out)
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        currentAngle = initialAngle + targetAngleRad * easeOut;
+
+        drawWheel();
+
+        if (progress < 1) {
+          requestAnimationFrame(animateSpin);
+        } else {
+          isSpinning = false;
+          document.getElementById("main-spin-btn").disabled = false;
+          document.getElementById("center-spin-btn").style.pointerEvents = "auto";
+          determineWinner();
+        }
+      }
+
+      requestAnimationFrame(animateSpin);
+    }
+
+    // Determinar qué segmento quedó bajo el puntero superior
+    function determineWinner() {
+      const numSegments = segments.length;
+      const arcSize = (2 * Math.PI) / numSegments;
+      
+      // La flecha está en la parte superior (270 grados = 1.5 * PI)
+      let normalizedAngle = (1.5 * Math.PI - currentAngle) % (2 * Math.PI);
+      if (normalizedAngle < 0) normalizedAngle += 2 * Math.PI;
+
+      const winningIndex = Math.floor(normalizedAngle / arcSize);
+      const winner = segments[winningIndex];
+
+      // Seleccionar un reto aleatorio de esa categoría
+      const randomChallenge = winner.challenges[Math.floor(Math.random() * winner.challenges.length)];
+
+      // Actualizar tarjeta lateral con feedback visual
+      document.getElementById("challenge-category").textContent = `Categoría: ${winner.category}`;
+      document.getElementById("challenge-category").style.color = winner.color;
+      document.getElementById("challenge-category").style.borderColor = winner.color;
+      document.getElementById("challenge-title").textContent = `Reto de ${winner.label}`;
+      document.getElementById("challenge-prompt").textContent = randomChallenge;
+
+      // Iniciar automáticamente el temporizador
+      startTimer30s();
+    }
+
+    // Temporizador de 30 segundos
+    let timerInterval = null;
+    let secondsLeft = 30;
+
+    function startTimer30s() {
+      clearInterval(timerInterval);
+      secondsLeft = 30;
+      const timerEl = document.getElementById("spin-countdown");
+      timerEl.textContent = `${secondsLeft}s`;
+      timerEl.style.color = "#fbbf24";
+
+      timerInterval = setInterval(() => {
+        secondsLeft--;
+        timerEl.textContent = `${secondsLeft}s`;
+        if (secondsLeft <= 5) {
+          timerEl.style.color = "#ef4444";
+        }
+        if (secondsLeft <= 0) {
+          clearInterval(timerInterval);
+          timerEl.textContent = "¡Tiempo!";
+          alert("⏰ ¡Tiempo cumplido para responder el reto!");
+        }
+      }, 1000);
+    }
+
+    // Marcador de Puntos
+    let scoreA = 0;
+    let scoreB = 0;
+
+    function addPoint(team) {
+      if (team === 'a') {
+        scoreA += 100;
+        document.getElementById("score-team-a").textContent = scoreA;
+      } else {
+        scoreB += 100;
+        document.getElementById("score-team-b").textContent = scoreB;
+      }
+    }
+
+    function resetGameSession() {
+      scoreA = 0;
+      scoreB = 0;
+      document.getElementById("score-team-a").textContent = "0";
+      document.getElementById("score-team-b").textContent = "0";
+      clearInterval(timerInterval);
+      document.getElementById("spin-countdown").textContent = "30s";
+      document.getElementById("challenge-category").textContent = "Categoría: En Espera";
+      document.getElementById("challenge-title").textContent = "¿Listo para el desafío?";
+      document.getElementById("challenge-prompt").textContent = "Haz girar la ruleta para seleccionar aleatoriamente una categoría y descubrir el reto.";
+    }
+  </script>
+</body>
+</html>
+

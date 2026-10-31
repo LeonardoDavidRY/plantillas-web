@@ -238,6 +238,16 @@ body::after {
   box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.25);
 }
 
+.hub-card--student:hover {
+  border-color: #0284c7;
+  box-shadow: 0 20px 40px -15px rgba(2, 132, 199, 0.25);
+}
+
+.hub-card--spinner:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 20px 40px -15px rgba(245, 158, 11, 0.3);
+}
+
 .hub-card-top {
   margin-bottom: 1.5rem;
 }
@@ -257,6 +267,8 @@ body::after {
 .icon--didactic { background: rgba(20, 184, 166, 0.15); border: 1px solid rgba(20, 184, 166, 0.3); }
 .icon--h5p { background: rgba(129, 140, 248, 0.15); border: 1px solid rgba(129, 140, 248, 0.3); }
 .icon--flashcards { background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.3); color: #818cf8; }
+.icon--student { background: rgba(2, 132, 199, 0.15); border: 1px solid rgba(2, 132, 199, 0.3); color: #38bdf8; }
+.icon--spinner { background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); color: #fbbf24; }
 
 .hub-card-badge {
   font-size: 0.72rem;
@@ -274,6 +286,8 @@ body::after {
 .badge--didactic { color: #99f6e4; background: rgba(20, 184, 166, 0.12); }
 .badge--h5p { color: #c7d2fe; background: rgba(129, 140, 248, 0.12); }
 .badge--flashcards { color: #a5b4fc; background: rgba(99, 102, 241, 0.15); }
+.badge--student { color: #7dd3fc; background: rgba(2, 132, 199, 0.15); }
+.badge--spinner { color: #fde68a; background: rgba(245, 158, 11, 0.15); }
 
 .hub-card h3 {
   margin: 0 0 0.6rem 0;
@@ -326,6 +340,12 @@ body::after {
 
 .btn--flashcards { background: #4338ca; color: #ffffff; }
 .btn--flashcards:hover { background: #3730a3; }
+
+.btn--student { background: #0284c7; color: #ffffff; }
+.btn--student:hover { background: #0369a1; }
+
+.btn--spinner { background: #f59e0b; color: #000000; }
+.btn--spinner:hover { background: #d97706; }
 
 /* Footer del Hub */
 .hub-footer {
