@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarjetas Didácticas & Emparejamiento | Recursos Interactivos de Estudio</title>
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- CSS propio e independiente para esta plantilla -->
+  <link rel="stylesheet" href="assets/tarjetas-didacticas.css" />
+</head>
+<body>
+
+  <!-- Barra superior con retorno -->
+  <header class="fc-topbar">
+    <div class="fc-container fc-nav">
+      <a class="fc-back-link" href="index.html">
+        <i class="bi bi-arrow-left"></i> Volver a la galería
+      </a>
+      <span class="fc-badge-header">
+        <i class="bi bi-collection-fill"></i> Repaso Activo & Gamificación
+      </span>
+    </div>
+  </header>
+
+  <!-- Encabezado de la Actividad -->
+  <div class="fc-container">
+    <header class="fc-header">
+      <span class="fc-tag"><i class="bi bi-stars"></i> Metodología de Repetición Espaciada</span>
+      <h1>Tarjetas de Memoria & Emparejamiento</h1>
+      <p>Herramienta interactiva para consolidar vocabulario, leyes científicas y conceptos clave mediante auto-evaluación y conexión visual de ideas.</p>
+    </header>
+
+    <!-- Pestañas de Cambio de Modo -->
+    <div class="mode-tabs-wrap">
+      <div class="mode-tabs">
+        <button class="mode-tab-btn active" id="tab-flashcards-btn" onclick="switchMode('flashcards')">
+          <i class="bi bi-card-text"></i> Flashcards 3D
+        </button>
+        <button class="mode-tab-btn" id="tab-matching-btn" onclick="switchMode('matching')">
+          <i class="bi bi-grid-3x3-gap-fill"></i> Emparejar Conceptos
+        </button>
+      </div>
+    </div>
+
+    <main>
+      <!-- ============================================================
+           VISTA 1: FLASHCARDS 3D INTERACTIVAS
+           ============================================================ -->
+      <section class="activity-mode-view active" id="view-flashcards">
+        <div class="flashcards-layout">
+          
+          <div class="fc-controls-bar">
+            <span class="fc-counter" id="fc-counter">Tarjeta 1 de 5</span>
+            <span class="fc-category-badge" id="fc-category">Ciencias de la Computación</span>
+          </div>
+
+          <!-- Barra de progreso -->
+          <div class="fc-progress-bar-wrap">
+            <div class="fc-progress-fill" id="fc-progress-fill" style="width: 20%;"></div>
+          </div>
+
+          <!-- Escena 3D de la tarjeta con giro interactivo -->
+          <div class="flashcard-3d-scene" onclick="flipCurrentCard()" title="Haz clic para girar la tarjeta">
+            <div class="flashcard-card" id="active-flashcard">
+              
+              <!-- CARA FRONTAL: CONCEPTO / PREGUNTA -->
+              <div class="card-face card-face--front">
+                <div class="card-face-header">
+                  <span>Pregunta / Término</span>
+                  <span class="card-hint"><i class="bi bi-arrow-repeat"></i> Clic para voltear</span>
+                </div>
+                <div class="card-face-body">
+                  <h2 class="card-concept-title" id="card-front-title">Algoritmo</h2>
+                  <p class="card-concept-subtitle" id="card-front-subtitle">Fundamentos de programación</p>
+                </div>
+                <div class="card-face-footer">
+                  <i class="bi bi-hand-index-thumb"></i> Toca o haz clic para ver la definición
+                </div>
+              </div>
+
+              <!-- CARA TRASERA: DEFINICIÓN / EXPLICACIÓN -->
+              <div class="card-face card-face--back">
+                <div class="card-face-header">
+                  <span>Definición / Respuesta</span>
+                  <span class="card-hint"><i class="bi bi-check-circle"></i> Repaso</span>
+                </div>
+                <div class="card-face-body">
+                  <p class="card-definition-text" id="card-back-definition">
+                    Conjunto ordenado, finito y bien definido de pasos o instrucciones que permite solucionar un problema específico o realizar una tarea.
+                  </p>
+                  <div class="card-formula-box" id="card-back-detail">
+                    Entrada ➔ Proceso ➔ Salida
+                  </div>
+                </div>
+                <div class="card-face-footer">
+                  <i class="bi bi-arrow-repeat"></i> Haz clic para volver al frente
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Botones de Navegación y Auto-calificación -->
+          <div class="fc-actions-row">
+            <button class="btn-fc-nav" id="btn-fc-prev" onclick="prevCard()" disabled>
+              <i class="bi bi-chevron-left"></i> Anterior
+            </button>
+
+            <div class="fc-eval-buttons">
+              <button class="btn-eval btn-eval--need-review" onclick="markCardMastery(false)" title="Volver a estudiar más tarde">
+                <i class="bi bi-arrow-counterclockwise"></i> Repasar
+              </button>
+              <button class="btn-eval btn-eval--mastered" onclick="markCardMastery(true)" title="Ya domino este concepto">
+                <i class="bi bi-check-lg"></i> Aprendido
+              </button>
+            </div>
+
+            <button class="btn-fc-nav" id="btn-fc-next" onclick="nextCard()">
+              Siguiente <i class="bi bi-chevron-right"></i>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============================================================
+           VISTA 2: EMPAREJAMIENTO DE CONCEPTOS (MATCHING GAME)
+           ============================================================ -->
+      <section class="activity-mode-view" id="view-matching">
+        <div class="matching-layout">
+          
+          <div class="matching-header">
+            <h2><i class="bi bi-link-45deg" style="color:var(--fc-primary);"></i> Emparejar Términos y Definiciones</h2>
+            <div class="matching-stats">
+              <span class="matching-chip" id="match-score">Parejas: 0 / 4</span>
+              <span class="matching-chip" id="match-attempts">Intentos: 0</span>
+              <button class="btn-secondary-match" onclick="resetMatchingGame()">
+                <i class="bi bi-arrow-counterclockwise"></i> Reiniciar
+              </button>
+            </div>
+          </div>
+
+          <p class="matching-instructions">
+            Haz clic en un término de la columna izquierda y luego haz clic en su definición correspondiente de la derecha para conectarlos.
+          </p>
+
+          <div class="matching-columns">
+            <!-- Columna de Términos -->
+            <div>
+              <h3 class="matching-col-title"><i class="bi bi-tag-fill"></i> Términos</h3>
+              <div class="items-column" id="terms-column">
+                <!-- Se llena dinámicamente con JS -->
+              </div>
+            </div>
+
+            <!-- Columna de Definiciones -->
+            <div>
+              <h3 class="matching-col-title"><i class="bi bi-chat-left-text-fill"></i> Definiciones</h3>
+              <div class="items-column" id="definitions-column">
+                <!-- Se llena dinámicamente con JS -->
+              </div>
+            </div>
+          </div>
+
+          <div class="matching-alert" id="matching-feedback">
+            🎉 ¡Excelente trabajo! Has emparejado correctamente todos los conceptos del reto.
+          </div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer didáctico -->
+  <footer class="fc-footer">
+    <div class="fc-container">
+      <p><strong>Recursos Didácticos de Aula</strong> • Optimizado para pizarras digitales interactivas, tabletas y ordenadores de estudio.</p>
+    </div>
+  </footer>
+
+  <!-- Lógica interactiva en Vanilla JS -->
+  <script>
+    /* ============================================================
+       1. BASE DE DATOS DE TARJETAS (FLASHCARDS)
+       ============================================================ */
+    const flashcardsData = [
+      {
+        concept: "Algoritmo",
+        category: "Ciencias de la Computación",
+        subtitle: "Lógica y programación",
+        definition: "Conjunto ordenado, finito y sistemático de instrucciones o reglas que permiten resolver un problema o procesar información.",
+        detail: "Entrada ➔ Algoritmo ➔ Salida"
+      },
+      {
+        concept: "Fotosíntesis",
+        category: "Biología & Ciencias Naturales",
+        subtitle: "Fisiología vegetal",
+        definition: "Proceso biológico mediante el cual las plantas convierten dióxido de carbono y agua en glucosa y oxígeno utilizando la energía de la luz solar.",
+        detail: "6CO₂ + 6H₂O + Luz ➔ C₆H₁₂O₆ + 6O₂"
+      },
+      {
+        concept: "Teorema de Pitágoras",
+        category: "Geometría & Matemáticas",
+        subtitle: "Triángulos rectángulos",
+        definition: "En todo triángulo rectángulo, el cuadrado de la longitud de la hipotenusa es igual a la suma de los cuadrados de las longitudes de los catetos.",
+        detail: "a² + b² = c²"
+      },
+      {
+        concept: "Energía Cinética",
+        category: "Física Mecánica",
+        subtitle: "Dinámica y trabajo",
+        definition: "Es la energía asociada al movimiento de un cuerpo, la cual depende directamente de su masa y del cuadrado de su velocidad.",
+        detail: "Ec = ½ · m · v²"
+      },
+      {
+        concept: "Pensamiento Crítico",
+        category: "Habilidades del Siglo XXI",
+        subtitle: "Filosofía y argumentación",
+        definition: "Capacidad de analizar, evaluar y contrastar información de forma reflexiva, imparcial y fundamentada antes de aceptar conclusiones.",
+        detail: "Cuestionar • Analizar • Concluir"
+      }
+    ];
+
+    let currentCardIndex = 0;
+    const cardElement = document.getElementById('active-flashcard');
+
+    function renderCard(index) {
+      const data = flashcardsData[index];
+      // Restablecer posición sin voltear
+      cardElement.classList.remove('flipped');
+
+      document.getElementById('fc-counter').textContent = `Tarjeta ${index + 1} de ${flashcardsData.length}`;
+      document.getElementById('fc-category').textContent = data.category;
+      document.getElementById('card-front-title').textContent = data.concept;
+      document.getElementById('card-front-subtitle').textContent = data.subtitle;
+      document.getElementById('card-back-definition').textContent = data.definition;
+      document.getElementById('card-back-detail').textContent = data.detail;
+
+      // Actualizar barra de progreso
+      const progressPercent = ((index + 1) / flashcardsData.length) * 100;
+      document.getElementById('fc-progress-fill').style.width = `${progressPercent}%`;
+
+      // Habilitar / deshabilitar botones
+      document.getElementById('btn-fc-prev').disabled = (index === 0);
+      document.getElementById('btn-fc-next').disabled = (index === flashcardsData.length - 1);
+    }
+
+    function flipCurrentCard() {
+      cardElement.classList.toggle('flipped');
+    }
+
+    function nextCard() {
+      if (currentCardIndex < flashcardsData.length - 1) {
+        currentCardIndex++;
+        renderCard(currentCardIndex);
+      }
+    }
+
+    function prevCard() {
+      if (currentCardIndex > 0) {
+        currentCardIndex--;
+        renderCard(currentCardIndex);
+      }
+    }
+
+    function markCardMastery(mastered) {
+      if (mastered) {
+        // Breve animación de avance
+        if (currentCardIndex < flashcardsData.length - 1) {
+          nextCard();
+        } else {
+          alert('🏆 ¡Has repasado todas las tarjetas del mazo!');
+        }
+      } else {
+        flipCurrentCard();
+      }
+    }
+
+    /* ============================================================
+       2. MODO EMPAREJAMIENTO (MATCHING GAME)
+       ============================================================ */
+    const matchingData = [
+      { id: '1', term: 'Algoritmo', def: 'Secuencia finita y ordenada de pasos para resolver un problema.' },
+      { id: '2', term: 'Fotosíntesis', def: 'Conversión de luz solar, CO₂ y agua en glucosa y oxígeno.' },
+      { id: '3', term: 'Hipotenusa', def: 'Lado de mayor longitud opuesto al ángulo recto en un triángulo.' },
+      { id: '4', term: 'Energía Cinética', def: 'Energía que posee un cuerpo debido a su velocidad y masa.' }
+    ];
+
+    let selectedTerm = null;
+    let selectedDef = null;
+    let pairedCount = 0;
+    let attemptsCount = 0;
+
+    function initMatchingGame() {
+      const termsCol = document.getElementById('terms-column');
+      const defsCol = document.getElementById('definitions-column');
+      termsCol.innerHTML = '';
+      defsCol.innerHTML = '';
+      pairedCount = 0;
+      attemptsCount = 0;
+      selectedTerm = null;
+      selectedDef = null;
+      updateMatchScore();
+      document.getElementById('matching-feedback').className = 'matching-alert';
+
+      // Barajar arrays
+      const shuffledTerms = [...matchingData].sort(() => Math.random() - 0.5);
+      const shuffledDefs = [...matchingData].sort(() => Math.random() - 0.5);
+
+      shuffledTerms.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'match-item';
+        div.dataset.id = item.id;
+        div.innerHTML = `<span>${item.term}</span> <span class="match-badge">${String.fromCharCode(65 + idx)}</span>`;
+        div.onclick = () => selectTerm(div);
+        termsCol.appendChild(div);
+      });
+
+      shuffledDefs.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'match-item';
+        div.dataset.id = item.id;
+        div.innerHTML = `<span>${item.def}</span> <span class="match-badge">${idx + 1}</span>`;
+        div.onclick = () => selectDef(div);
+        defsCol.appendChild(div);
+      });
+    }
+
+    function selectTerm(elem) {
+      if (elem.classList.contains('paired')) return;
+
+      document.querySelectorAll('#terms-column .match-item').forEach(el => el.classList.remove('selected'));
+      selectedTerm = elem;
+      elem.classList.add('selected');
+
+      checkMatch();
+    }
+
+    function selectDef(elem) {
+      if (elem.classList.contains('paired')) return;
+
+      document.querySelectorAll('#definitions-column .match-item').forEach(el => el.classList.remove('selected'));
+      selectedDef = elem;
+      elem.classList.add('selected');
+
+      checkMatch();
+    }
+
+    function checkMatch() {
+      if (!selectedTerm || !selectedDef) return;
+
+      attemptsCount++;
+
+      if (selectedTerm.dataset.id === selectedDef.dataset.id) {
+        // Emparejamiento correcto
+        selectedTerm.classList.remove('selected');
+        selectedDef.classList.remove('selected');
+        selectedTerm.classList.add('paired');
+        selectedDef.classList.add('paired');
+        selectedTerm = null;
+        selectedDef = null;
+        pairedCount++;
+        updateMatchScore();
+
+        if (pairedCount === matchingData.length) {
+          const feedback = document.getElementById('matching-feedback');
+          feedback.className = 'matching-alert show success';
+          feedback.innerHTML = `🎉 ¡Reto completado en ${attemptsCount} intentos! Dominio conceptual comprobado.`;
+        }
+      } else {
+        // Emparejamiento erróneo
+        const termElem = selectedTerm;
+        const defElem = selectedDef;
+        termElem.classList.add('wrong');
+        defElem.classList.add('wrong');
+
+        setTimeout(() => {
+          termElem.classList.remove('selected', 'wrong');
+          defElem.classList.remove('selected', 'wrong');
+        }, 500);
+
+        selectedTerm = null;
+        selectedDef = null;
+        updateMatchScore();
+      }
+    }
+
+    function updateMatchScore() {
+      document.getElementById('match-score').textContent = `Parejas: ${pairedCount} / ${matchingData.length}`;
+      document.getElementById('match-attempts').textContent = `Intentos: ${attemptsCount}`;
+    }
+
+    function resetMatchingGame() {
+      initMatchingGame();
+    }
+
+    /* ============================================================
+       3. CAMBIO DE MODO
+       ============================================================ */
+    function switchMode(mode) {
+      document.getElementById('tab-flashcards-btn').classList.remove('active');
+      document.getElementById('tab-matching-btn').classList.remove('active');
+      document.getElementById('view-flashcards').classList.remove('active');
+      document.getElementById('view-matching').classList.remove('active');
+
+      if (mode === 'flashcards') {
+        document.getElementById('tab-flashcards-btn').classList.add('active');
+        document.getElementById('view-flashcards').classList.add('active');
+      } else {
+        document.getElementById('tab-matching-btn').classList.add('active');
+        document.getElementById('view-matching').classList.add('active');
+        if (pairedCount === 0) {
+          initMatchingGame();
+        }
+      }
+    }
+
+    // Inicializar al cargar
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCard(0);
+      initMatchingGame();
+    });
+  </script>
+</body>
+</html>
+
