@@ -248,6 +248,11 @@ body::after {
   box-shadow: 0 20px 40px -15px rgba(245, 158, 11, 0.3);
 }
 
+.hub-card--cert:hover {
+  border-color: #b45309;
+  box-shadow: 0 20px 40px -15px rgba(180, 83, 9, 0.35);
+}
+
 .hub-card-top {
   margin-bottom: 1.5rem;
 }
@@ -269,6 +274,7 @@ body::after {
 .icon--flashcards { background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.3); color: #818cf8; }
 .icon--student { background: rgba(2, 132, 199, 0.15); border: 1px solid rgba(2, 132, 199, 0.3); color: #38bdf8; }
 .icon--spinner { background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); color: #fbbf24; }
+.icon--cert { background: rgba(180, 83, 9, 0.15); border: 1px solid rgba(180, 83, 9, 0.3); color: #f59e0b; }
 
 .hub-card-badge {
   font-size: 0.72rem;
@@ -288,6 +294,7 @@ body::after {
 .badge--flashcards { color: #a5b4fc; background: rgba(99, 102, 241, 0.15); }
 .badge--student { color: #7dd3fc; background: rgba(2, 132, 199, 0.15); }
 .badge--spinner { color: #fde68a; background: rgba(245, 158, 11, 0.15); }
+.badge--cert { color: #fef3c7; background: rgba(180, 83, 9, 0.2); }
 
 .hub-card h3 {
   margin: 0 0 0.6rem 0;
@@ -346,6 +353,9 @@ body::after {
 
 .btn--spinner { background: #f59e0b; color: #000000; }
 .btn--spinner:hover { background: #d97706; }
+
+.btn--cert { background: #b45309; color: #ffffff; }
+.btn--cert:hover { background: #92400e; }
 
 /* Footer del Hub */
 .hub-footer {

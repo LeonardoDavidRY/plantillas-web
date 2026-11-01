@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generador de Certificados y Diplomas Académicos | Portal Educativo</title>
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- CSS propio e independiente para esta plantilla -->
+  <link rel="stylesheet" href="assets/certificados.css" />
+</head>
+
+<body>
+
+  <!-- Barra superior con retorno -->
+  <header class="cert-topbar">
+    <div class="cert-container cert-nav">
+      <a class="cert-back-link" href="index.html">
+        <i class="bi bi-arrow-left"></i> Volver a la galería
+      </a>
+      <span class="cert-badge-header">
+        <i class="bi bi-award-fill"></i> Certificación & Acreditación Oficial
+      </span>
+    </div>
+  </header>
+
+  <!-- Encabezado -->
+  <div class="cert-container">
+    <header class="cert-header">
+      <span class="cert-tag"><i class="bi bi-patch-check-fill"></i> Validación Académica Oficial</span>
+      <h1>Generador de Diplomas y Certificados</h1>
+      <p>Personaliza en tiempo real constancias de honor, diplomas de grado y certificados de aprobación con sellos de
+        seguridad, firmas y optimización directa para impresión en PDF.</p>
+    </header>
+
+    <main class="cert-workspace-grid">
+      <!-- Columna Izquierda: Formulario de Personalización en Vivo -->
+      <aside class="cert-form-panel">
+        <h2><i class="bi bi-sliders" style="color:var(--cert-accent);"></i> Datos del Certificado</h2>
+
+        <!-- Presets de Cursos / Tipos de Diploma -->
+        <div class="form-group">
+          <label>Plantilla predeterminada:</label>
+          <div class="preset-selector">
+            <button class="preset-btn active" id="btn-pre-steam" onclick="loadPreset('steam')">STEAM / Robótica</button>
+            <button class="preset-btn" id="btn-pre-math" onclick="loadPreset('math')">Matemáticas</button>
+            <button class="preset-btn" id="btn-pre-honor" onclick="loadPreset('honor')">Cuadro de Honor</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inp-student"><i class="bi bi-person"></i> Nombre del Estudiante:</label>
+          <input type="text" id="inp-student" class="form-control" value="Leonardo Ramírez"
+            oninput="updateCertificate()" placeholder="Ej. Juan Pérez">
+        </div>
+
+        <div class="form-group">
+          <label for="inp-course"><i class="bi bi-book"></i> Curso o Motivo de Certificación:</label>
+          <input type="text" id="inp-course" class="form-control"
+            value="Semillero Avanzado de Robótica Educativa e Inteligencia Artificial" oninput="updateCertificate()">
+        </div>
+
+        <div class="form-group">
+          <label for="inp-hours"><i class="bi bi-clock-history"></i> Intensidad Horaria:</label>
+          <input type="text" id="inp-hours" class="form-control" value="60 Horas Académicas"
+            oninput="updateCertificate()">
+        </div>
+
+        <div class="form-group">
+          <label for="inp-date"><i class="bi bi-calendar3"></i> Fecha de Emisión:</label>
+          <input type="text" id="inp-date" class="form-control" value="31 de Octubre de 2026"
+            oninput="updateCertificate()">
+        </div>
+
+        <div class="form-group">
+          <label for="inp-director"><i class="bi bi-pen"></i> Nombre del Rector / Director:</label>
+          <input type="text" id="inp-director" class="form-control" value="Dr. Fernando Morales"
+            oninput="updateCertificate()">
+        </div>
+
+        <div class="cert-actions-box">
+          <button class="btn-print-cert" onclick="window.print()">
+            <i class="bi bi-printer-fill"></i> Imprimir / Guardar como PDF
+          </button>
+        </div>
+      </aside>
+
+      <!-- Columna Derecha: Vista Previa Realista del Diploma -->
+      <section class="cert-preview-wrap">
+        <article class="diploma-sheet" id="diploma-to-print">
+          <div class="diploma-border-outer">
+            <div class="diploma-border-inner">
+
+              <!-- Cabecera Institucional -->
+              <div class="diploma-header">
+                <div class="diploma-shield-seal">
+                  <i class="bi bi-mortarboard-fill"></i>
+                </div>
+                <h3 class="diploma-inst-name" id="view-inst-name">Colegio Nueva Esperanza</h3>
+                <p class="diploma-inst-sub">Educación Bilingüe • Enfoque STEAM • Aprobación Oficial No. 2489</p>
+              </div>
+
+              <div class="diploma-award-text">Otorga el presente</div>
+              <h2 class="diploma-cert-title" id="view-cert-type">DIPLOMA DE EXCELENCIA</h2>
+
+              <p class="diploma-recipient-pre">A favor de:</p>
+              <div class="diploma-student-name" id="view-student-name">Leonardo Ramírez</div>
+
+              <p class="diploma-body-desc" id="view-body-desc">
+                Por haber completado y aprobado satisfactoriamente todos los módulos teóricos y prácticos
+                correspondientes al programa curricular de:
+                <br><strong id="view-course-name" style="color:#0f172a; font-size:1.05rem;">Semillero Avanzado de
+                  Robótica Educativa e Inteligencia Artificial</strong>
+              </p>
+
+              <!-- Metadatos de Intensidad y Calificación -->
+              <div class="diploma-meta-badges">
+                <div class="cert-meta-item">
+                  <i class="bi bi-clock" style="color:var(--cert-gold);"></i> Intensidad: <strong id="view-hours">60
+                    Horas Académicas</strong>
+                </div>
+                <div class="cert-meta-item">
+                  <i class="bi bi-calendar-check" style="color:var(--cert-gold);"></i> Expedido el: <strong
+                    id="view-date">31 de Octubre de 2026</strong>
+                </div>
+              </div>
+
+              <!-- Firmas y Sello Oficial -->
+              <div class="diploma-signatures-grid">
+                <!-- Firma Docente -->
+                <div class="sig-box">
+                  <div class="sig-img-placeholder">Prof. Carlos Mendoza</div>
+                  <div class="sig-line"></div>
+                  <p class="sig-name">Prof. Carlos Mendoza</p>
+                  <p class="sig-role">Coordinador de Área STEAM</p>
+                </div>
+
+                <!-- Sello Dorado Central -->
+                <div class="diploma-center-seal">
+                  <div class="seal-circle">
+                    <i class="bi bi-award"></i>
+                  </div>
+                  <span class="seal-text">Acreditado</span>
+                </div>
+
+                <!-- Firma Rector -->
+                <div class="sig-box">
+                  <div class="sig-img-placeholder" id="view-sig-director">Dr. Fernando Morales</div>
+                  <div class="sig-line"></div>
+                  <p class="sig-name" id="view-director-name">Dr. Fernando Morales</p>
+                  <p class="sig-role">Rector Institucional</p>
+                </div>
+              </div>
+
+              <!-- Código de Verificación y Registro -->
+              <div class="diploma-footer-code">
+                <span><i class="bi bi-qr-code"></i> ID de Verificación: <strong>CNE-2026-9842-A</strong></span>
+                <span>Registro Oficial de Secretaría de Educación • Folio 45</span>
+              </div>
+
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <footer class="cert-footer"
+    style="background:#ffffff; border-top:1px solid #e2e8f0; padding:2rem 0; text-align:center; font-size:0.88rem; color:#64748b;">
+    <div class="cert-container">
+      <p><strong>Generador de Documentos Oficiales</strong> • Formato compatible con impresión estándar A4 / Carta
+        horizontal.</p>
+    </div>
+  </footer>
+
+  <!-- Lógica en tiempo real -->
+  <script>
+    function updateCertificate() {
+      const student = document.getElementById('inp-student').value || 'Nombre del Estudiante';
+      const course = document.getElementById('inp-course').value || 'Nombre de la Materia o Programa';
+      const hours = document.getElementById('inp-hours').value || '0 Horas';
+      const date = document.getElementById('inp-date').value || 'Fecha de Emisión';
+      const director = document.getElementById('inp-director').value || 'Rector Institucional';
+
+      document.getElementById('view-student-name').textContent = student;
+      document.getElementById('view-course-name').textContent = course;
+      document.getElementById('view-hours').textContent = hours;
+      document.getElementById('view-date').textContent = date;
+      document.getElementById('view-director-name').textContent = director;
+      document.getElementById('view-sig-director').textContent = director;
+    }
+
+    const presets = {
+      steam: {
+        title: "DIPLOMA DE EXCELENCIA",
+        course: "Semillero Avanzado de Robótica Educativa e Inteligencia Artificial",
+        hours: "60 Horas Académicas",
+        desc: "Por haber completado y aprobado satisfactoriamente todos los módulos teóricos y prácticos correspondientes al programa curricular de:"
+      },
+      math: {
+        title: "CERTIFICADO DE APROBACIÓN",
+        course: "Olimpiadas Institucionales de Razonamiento Lógico y Geometría",
+        hours: "40 Horas de Entrenamiento",
+        desc: "Por su destacada participación, disciplina y sobresaliente desempeño en las pruebas selectivas de:"
+      },
+      honor: {
+        title: "MENCIÓN DE HONOR",
+        course: "Máximo Rendimiento Académico y Convivencia Escolar 2026",
+        hours: "Año Lectivo Completo",
+        desc: "En reconocimiento a su ejemplar compromiso ético, constancia y haber obtenido el primer puesto académico en:"
+      }
+    };
+
+    function loadPreset(key) {
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(`btn-pre-${key}`).classList.add('active');
+
+      const data = presets[key];
+      if (!data) return;
+
+      document.getElementById('view-cert-type').textContent = data.title;
+      document.getElementById('inp-course').value = data.course;
+      document.getElementById('inp-hours').value = data.hours;
+      document.getElementById('view-course-name').textContent = data.course;
+      document.getElementById('view-hours').textContent = data.hours;
+      document.getElementById('view-body-desc').innerHTML = `${data.desc}<br><strong id="view-course-name" style="color:#0f172a; font-size:1.05rem;">${data.course}</strong>`;
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,500 @@
+/* ============================================================
+   GENERADOR & VISUALIZADOR DE CERTIFICADOS Y DIPLOMAS ACADÉMICOS
+   ============================================================ */
+
+:root {
+  --cert-bg: #f1f5f9;
+  --cert-surface: #ffffff;
+  --cert-primary: #0f172a;        /* Azul marino sobrio */
+  --cert-gold: #b45309;           /* Dorado académico */
+  --cert-gold-light: #fef3c7;
+  --cert-accent: #0284c7;
+  --cert-text: #1e293b;
+  --cert-muted: #64748b;
+  --cert-border: #cbd5e1;
+  --cert-radius: 16px;
+  --cert-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--cert-bg);
+  color: var(--cert-text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Barra superior */
+.cert-topbar {
+  background: var(--cert-surface);
+  border-bottom: 1px solid var(--cert-border);
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.cert-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.cert-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cert-back-link {
+  color: var(--cert-primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #f8fafc;
+  border: 1px solid var(--cert-border);
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.cert-back-link:hover {
+  background: #e2e8f0;
+}
+
+.cert-badge-header {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cert-gold);
+  background: var(--cert-gold-light);
+  border: 1px solid #fde68a;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Header */
+.cert-header {
+  text-align: center;
+  padding: 2.25rem 0 1.5rem;
+}
+
+.cert-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cert-gold);
+  background: var(--cert-gold-light);
+  border: 1px solid #fde68a;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 0.85rem;
+}
+
+.cert-header h1 {
+  font-size: clamp(1.8rem, 3.8vw, 2.5rem);
+  font-weight: 800;
+  color: var(--cert-primary);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.cert-header p {
+  color: var(--cert-muted);
+  font-size: 1.05rem;
+  max-width: 65ch;
+  margin: 0 auto;
+}
+
+/* Layout 2 columnas: Editor a la izquierda + Diploma en vivo a la derecha */
+.cert-workspace-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 2rem;
+  padding-bottom: 4rem;
+}
+
+@media (max-width: 980px) {
+  .cert-workspace-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Panel de Formulario / Personalización */
+.cert-form-panel {
+  background: var(--cert-surface);
+  border: 1px solid var(--cert-border);
+  border-radius: var(--cert-radius);
+  padding: 1.75rem;
+  box-shadow: var(--cert-shadow);
+  height: fit-content;
+}
+
+.cert-form-panel h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--cert-primary);
+  margin: 0 0 1.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.75rem;
+}
+
+.form-group {
+  margin-bottom: 1.15rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 0.4rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1.5px solid var(--cert-border);
+  border-radius: 8px;
+  font-size: 0.92rem;
+  color: var(--cert-text);
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #f8fafc;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #0284c7;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.preset-selector {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.preset-btn {
+  flex: 1;
+  background: #f1f5f9;
+  border: 1px solid var(--cert-border);
+  padding: 0.5rem 0.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.preset-btn.active {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+/* Botones de acción (Imprimir y Descargar) */
+.cert-actions-box {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.btn-print-cert {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #ffffff;
+  border: none;
+  padding: 0.85rem 1.25rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+.btn-print-cert:hover {
+  background: linear-gradient(135deg, #0369a1, #075985);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   DISEÑO DEL DIPLOMA / CERTIFICADO OFICIAL
+   ============================================================ */
+.cert-preview-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.diploma-sheet {
+  width: 100%;
+  max-width: 820px;
+  background: #ffffff;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+/* Marco ornamental del diploma */
+.diploma-border-outer {
+  border: 3px double #b45309;
+  padding: 8px;
+  border-radius: 6px;
+  background: #ffffff;
+  position: relative;
+}
+
+.diploma-border-inner {
+  border: 1px solid #d97706;
+  padding: 2rem 2.25rem;
+  border-radius: 4px;
+  background: radial-gradient(circle at center, #ffffff 60%, #fffbeb 100%);
+  text-align: center;
+  position: relative;
+}
+
+/* Encabezado del diploma */
+.diploma-header {
+  margin-bottom: 1.5rem;
+}
+
+.diploma-shield-seal {
+  width: 54px;
+  height: 54px;
+  background: linear-gradient(135deg, #b45309, #d97706);
+  border-radius: 50%;
+  margin: 0 auto 0.75rem;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 10px rgba(180, 83, 9, 0.3);
+}
+
+.diploma-inst-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #0f172a;
+  margin: 0 0 0.25rem 0;
+}
+
+.diploma-inst-sub {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Título de certificación */
+.diploma-award-text {
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #94a3b8;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.diploma-cert-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  font-family: "Georgia", serif;
+  color: #1e1b4b;
+  margin: 0 0 1.25rem 0;
+  letter-spacing: -0.01em;
+}
+
+.diploma-recipient-pre {
+  font-size: 0.92rem;
+  color: #64748b;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Nombre del estudiante en caligrafía destacada */
+.diploma-student-name {
+  font-size: 2.2rem;
+  font-weight: 800;
+  font-family: "Georgia", serif;
+  color: #0f172a;
+  margin: 0.4rem 0 0.6rem 0;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid #b45309;
+  display: inline-block;
+  min-width: 320px;
+}
+
+.diploma-body-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #334155;
+  max-width: 58ch;
+  margin: 0.85rem auto 1.75rem;
+}
+
+/* Metadatos: Horas y Calificación */
+.diploma-meta-badges {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.cert-meta-item {
+  font-size: 0.82rem;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cert-meta-item strong {
+  color: #0f172a;
+}
+
+/* Sección de firmas y sellos oficiales */
+.diploma-signatures-grid {
+  display: grid;
+  grid-template-columns: 1fr 120px 1fr;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+}
+
+.sig-box {
+  text-align: center;
+}
+
+.sig-line {
+  border-top: 1px solid #475569;
+  margin-bottom: 0.5rem;
+  padding-top: 0.4rem;
+}
+
+.sig-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.sig-role {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.sig-img-placeholder {
+  font-family: "Brush Script MT", "Caveat", cursive, serif;
+  font-size: 1.6rem;
+  color: #1e3a8a;
+  height: 40px;
+  line-height: 40px;
+}
+
+/* Sello circular dorado con cinta */
+.diploma-center-seal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.seal-circle {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fde68a, #b45309);
+  border: 3px solid #78350f;
+  box-shadow: 0 4px 10px rgba(180, 83, 9, 0.4);
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-size: 1.7rem;
+}
+
+.seal-text {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #b45309;
+  margin-top: 0.25rem;
+}
+
+/* Código QR y verificación */
+.diploma-footer-code {
+  margin-top: 1.5rem;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* ESTILOS DE IMPRESIÓN (PRINT OPTIMIZED) */
+@media print {
+  body {
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+  .cert-topbar,
+  .cert-header,
+  .cert-form-panel,
+  .cert-footer,
+  .btn-print-cert {
+    display: none !important;
+  }
+  .cert-workspace-grid {
+    display: block;
+    padding: 0;
+  }
+  .diploma-sheet {
+    max-width: 100%;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    page-break-inside: avoid;
+  }
+  .diploma-border-outer {
+    padding: 10px;
+  }
+}
+
